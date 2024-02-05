@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 // import { Pagination } from "swiper";
 import { Slider } from "antd";
-import "./Singleproduct.css";
+import "./SingleProduct.css";
 import { RiStarSFill } from "react-icons/ri";
 import { BiHeart, BiDetail } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
