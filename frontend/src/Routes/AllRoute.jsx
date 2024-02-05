@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
-import Login from "../Pages/login/Signup";
-import Footer from "../Components/footer/Footer";
+import Login from "../Pages/login/Login";
+import Footer from "../Components/Footer/Footer";
 import Home from "../Pages/home/Home";
 import Admin from "../Pages/admin/Admin";
 import Profile from "../Pages/profile/Profile";
