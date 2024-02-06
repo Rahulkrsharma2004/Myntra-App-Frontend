@@ -94,7 +94,7 @@ const Signup = () => {
               value={userDetails.name}
               onChange={handleUserDetails}
               type="text"
-              required={true}
+              required
               placeholder="Full name"
             />
             <input
@@ -102,12 +102,14 @@ const Signup = () => {
               value={userDetails.email}
               onChange={handleUserDetails}
               type="email"
+              required
               placeholder="Enter email"
             />
             <input
               name="password"
               value={userDetails.password}
               onChange={handleUserDetails}
+              required
               type="password"
               placeholder="Set a password"
             />

@@ -192,7 +192,7 @@
       left: 45%;
     }
   }
-  @media (max-width: 1230px) {
+  @media (max-width: 1280px) {
     .item-right {
       flex: 0 0 17%;
     }

@@ -61,6 +61,7 @@ const Login = () => {
                             value={userDetails.email}
                             onChange={handleUserDetails}
                             type="email"
+                            required
                             placeholder="Enter email"
                         />
                         <input
@@ -68,6 +69,7 @@ const Login = () => {
                             value={userDetails.password}
                             onChange={handleUserDetails}
                             type="password"
+                            required
                             placeholder="Set a password"
                         />
                         <p>

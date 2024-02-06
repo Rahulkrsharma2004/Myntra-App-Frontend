@@ -8,7 +8,7 @@ const login = () => {
       <h3>PLEASE LOG IN</h3>
       <p>Login to view items in your wishlist.</p>
       <img src={wishlist} alt="img" />
-      <Link to="/signup">
+      <Link to="/login">
         <button>LOGIN</button>
       </Link>
     </div>

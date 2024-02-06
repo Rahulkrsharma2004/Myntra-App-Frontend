@@ -1,10 +1,9 @@
 import React from "react";
-// import "./Wishlist.css";
-import Login from "../../Components/Login/Login";
+import Login from "../../Components/Login/login";
 const Wishlist = () => {
   const login = false;
   if (!login) {
-    return <Login />;
+    return <Login/>;
   }
 
   return <div>Wishlist</div>;

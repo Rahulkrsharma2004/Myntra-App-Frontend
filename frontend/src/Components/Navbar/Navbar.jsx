@@ -5,10 +5,8 @@ import { BiSearch, BiUser, BiHeart } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
-// import { useDispatch, useSelector } from "react-redux";
 import { RiAdminLine } from "react-icons/ri";
 import { Dropdown } from "antd";
-// import { authLogout } from "../../Redux/auth/action";
 import { Context } from "../../Contexts/AuthContext";
 
 const navbar = () => {
@@ -37,7 +35,6 @@ const navbar = () => {
   // console.log(auth.data.isAuth)
   const styleA = { left: "-100%" };
   const styleB = { left: "0%" };
-  const login = false;
   const items = [
     {
       label: isAuth ? (
@@ -301,14 +298,6 @@ const navbar = () => {
               </Link>
             </Dropdown>
           </div>
-          {/* {user === "admin" ? (
-            <div className="navIcons display">
-              <Link to="/admin">
-                <RiAdminLine className="sideIcons" />
-                <p>Admin</p>
-              </Link>
-            </div>
-          ) : null} */}
           <div className="navIcons">
             <Link to="/wishlist">
               <BiHeart className="sideIcons" />
