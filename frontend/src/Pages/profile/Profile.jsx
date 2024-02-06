@@ -5,14 +5,14 @@ import { Modal } from "antd";
 import { Link } from "react-router-dom";
 const Profile = () => {
   const [modal2Open, setModal2Open] = useState(false);
-  const { user } = useSelector((store) => store.auth.data);
-  const [formData, setFormData] = useState({
-    name: user.name || "",
-    phone: user.phone || "",
-    avatar: "",
-    gender: "",
-    shipping: user.shipping || "",
-  });
+  // const { user } = useSelector((store) => store.auth.data);
+  // const [formData, setFormData] = useState({
+  //   name: user.name || "",
+  //   phone: user.phone || "",
+  //   avatar: "",
+  //   gender: "",
+  //   shipping: user.shipping || "",
+  // });
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -31,31 +31,31 @@ const Profile = () => {
     <div className="profile">
       <div className="profileCon">
         <div className="profileImage">
-          <img src={user?.avatar} alt="avatar" />
-          <p>{user?.email}</p>
+          {/* <img src={user?.avatar} alt="avatar" /> */}
+          {/* <p>{user?.email}</p> */}
           <button onClick={() => setModal2Open(true)}>EDIT PROFILE</button>
         </div>
         <div className="profileDetails">
           <h3>Profile Details</h3>
           <div>
             <p>Full Name </p>
-            <p>{user?.name}</p>
+            {/* <p>{user?.name}</p> */}
           </div>
           <div>
             <p>Mobile Number</p>
-            <p>{user?.mobile ? user.mobile : "Not added"}</p>
+            {/* <p>{user?.mobile ? user.mobile : "Not added"}</p> */}
           </div>
           <div>
             <p>Email</p>
-            <p>{user?.email}</p>
+            {/* <p>{user?.email}</p> */}
           </div>
           <div>
             <p>Gender</p>
-            <p>{user?.gender ? user.gender : "Not added"}</p>
+            {/* <p>{user?.gender ? user.gender : "Not added"}</p> */}
           </div>
           <div>
             <p>Shipping Details</p>
-            <p>{user?.shipping ? user.shipping : "Not added"}</p>
+            {/* <p>{user?.shipping ? user.shipping : "Not added"}</p> */}
           </div>
           <Modal
             title="Edit your personal details"
@@ -67,7 +67,7 @@ const Profile = () => {
             <form onSubmit={handleFormSubmit}>
               <input
                 name="name"
-                value={formData.name}
+                // value={formData.name}
                 onChange={handleFormChange}
                 type="text"
                 placeholder="Full name"
@@ -75,7 +75,7 @@ const Profile = () => {
               <br />
               <input
                 name="phone"
-                value={formData.phone}
+                // value={formData.phone}
                 onChange={handleFormChange}
                 type="tel"
                 placeholder="Enter phone number"
@@ -83,7 +83,7 @@ const Profile = () => {
               <br />
               <input
                 name="avatar"
-                value={formData.avatar}
+                // value={formData.avatar}
                 onChange={handleFormChange}
                 type="url"
                 placeholder="Paste avatar link"
@@ -91,7 +91,7 @@ const Profile = () => {
               <br />
               <input
                 name="shipping"
-                value={formData.shipping}
+                // value={formData.shipping}
                 onChange={handleFormChange}
                 type="text"
                 placeholder="Shipping details"

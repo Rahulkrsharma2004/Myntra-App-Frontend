@@ -16,7 +16,7 @@ const navbar = () => {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
   const {isAuth, setIsAuth} = useContext(Context);
-
+  setIsAuth(false)
 
 
   const handleClick = (param = "", value = "") => {
@@ -34,37 +34,35 @@ const navbar = () => {
       return navigate(`/product?keyword=${keyword.trim()}`);
     }
   };
-  // console.log(auth.data.isAuthenticated)
+  // console.log(auth.data.isAuth)
   const styleA = { left: "-100%" };
   const styleB = { left: "0%" };
   const login = false;
   const items = [
-    // {
-    //   label: auth.data.isAuthenticated ? (
-    //     <div>
-    //       <h4>Welcome</h4>
-    //       <p>Access orders and many more !</p>
-    //     </div>
-    //   ) : (
-    //     <div>
-    //       <h4>Welcome</h4>
-    //       <p>To access orders and manage account</p>
-    //     </div>
-    //   ),
-    //   key: "-1",
-    // },
-    // {
-    //   label: auth.data.isAuthenticated ? (
-    //     <p onClick={() => dispatch(authLogout())} p="10px">
-    //       Logout
-    //     </p>
-    //   ) : (
-    //     <Link padding="10px" to="/login">Login / Signup</Link>
-          
-        
-    //   ),
-    //   key: "0",
-    // },
+    {
+      label: isAuth ? (
+        <div>
+          <h4>Welcome</h4>
+          <p>Access orders and many more !</p>
+        </div>
+      ) : (
+        <div>
+          <h4>Welcome</h4>
+          <p>To access orders and manage account</p>
+        </div>
+      ),
+      key: "-1",
+    },
+    {
+      label: isAuth ? (
+        <p onClick={() => dispatch(authLogout())} p="10px">
+          Logout
+        </p>
+      ) : (
+        <Link padding="10px" to="/login">Login / Signup</Link>
+      ),
+      key: "0",
+    },
     {
       type: "divider",
     },

@@ -1,100 +1,122 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-// import { useDispatch, useSelector } from "react-redux";
-// import { registerUser } from "../../Redux/auth/action";
-import { message } from "antd";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../../Contexts/AuthContext";
+
 const Signup = () => {
-  const [formData, setFormData] = useState({
+
+  const [userDetails, setUserDetails] = useState({ username: "", email: "", pass: "" })
+  const nevigate = useNavigate()
+  const [errors, setErrors] = useState({
     name: "",
     email: "",
-    password: "",
+    pass: ""
   });
-  const [messageApi, contextHolder] = message.useMessage();
-  // const dispatch = useDispatch();
-  // const auth = useSelector((store) => store.auth);
-  // console.log(auth);
-  const navigate = useNavigate();
-  const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    if (
-      formData.name.trim() !== "" &&
-      formData.email.trim() !== "" &&
-      formData.password.trim() !== ""
-    ) {
-      if (
-        formData.name.trim().length < 4 ||
-        formData.password.trim().length < 4
-      ) {
-        messageApi.open({
-          type: "error",
-          content: "Name and password must be at least 4 characters",
-          duration: 3,
-        });
-      } else {
-        dispatch(registerUser(formData));
-      }
-    } else {
-      messageApi.open({
-        type: "error",
-        content: "Please enter all required fields",
-        duration: 3,
-      });
+
+  const handleUserDetails = (e) => {
+    const { name, value } = e.target
+
+    setUserDetails((userDetails) => ({
+      ...userDetails,
+      [name]: value
+    }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: ""
+    }));
+  }
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = {};
+
+    if (userDetails.name.trim() === "") {
+      newErrors.name = "Name is required";
+      valid = false;
     }
+
+    if (userDetails.email.trim() === "") {
+      newErrors.email = "Email is required";
+      valid = false;
+    }
+
+    if (userDetails.password.trim() === "") {
+      newErrors.password = "Password is required";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
   };
-  // if (auth.data.isAuthenticated) {
-  //   messageApi.open({
-  //     type: "success",
-  //     content: "User registered successfully",
-  //     duration: 3,
-  //   });
-  //   // return <Navigate to="/" />;
-  // }
+
+  const handleRegisterUser = async () => {
+   
+      try {
+        let response = await axios.post("https://myntra-app-backend-production.up.railway.app/user/register", userDetails, { withCredentials: true })
+        console.log(response)
+
+        // if (response.data.msg == 'New user has been created') {
+        //   alert("Registered Successfully")
+        //   nevigate("/")
+        // }
+
+ 
+      } catch (error) {
+        console.log(error.message)
+        // if (error.data.error == 'Invalid password format') {
+        //   alert("Invalid password format")
+        // }
+        // if (error.response.data.error == 'User with this email already exists') {
+        //   alert("User with this email already exists")
+        // }
+      }
+  
+
+  }
+
+
+
   return (
     <div className="signup">
       <div className="signupContainer">
         <div className="signupImage">
-          <img src="./assets/signup.png" alt="" />
+          <img src="https://myntraa-clone.netlify.app/assets/signup.png" alt="" />
         </div>
         <div className="signupDetail">
           <div>
             <h3>Signup</h3>
           </div>
           <div>
-            <form onSubmit={handleFormSubmit}>
-              <input
-                name="name"
-                value={formData.name}
-                onChange={handleFormChange}
-                type="text"
-                placeholder="Full name"
-              />
-              <input
-                name="email"
-                value={formData.email}
-                onChange={handleFormChange}
-                type="email"
-                placeholder="Enter email"
-              />
-              <input
-                name="password"
-                value={formData.password}
-                onChange={handleFormChange}
-                type="password"
-                placeholder="Set a password"
-              />
-              <p>
-                Already a User ? <Link to="/login">Login .</Link>
-              </p>
-              <button type="submit">
-                CONTINUE
-                {contextHolder}
-                {/* {auth.userRegister.loading ? "Loading" : "CONTINUE"} */}
-              </button>
-            </form>
+            <input
+              name="name"
+              value={userDetails.name}
+              onChange={handleUserDetails}
+              type="text"
+              required={true}
+              placeholder="Full name"
+            />
+            <input
+              name="email"
+              value={userDetails.email}
+              onChange={handleUserDetails}
+              type="email"
+              placeholder="Enter email"
+            />
+            <input
+              name="password"
+              value={userDetails.password}
+              onChange={handleUserDetails}
+              type="password"
+              placeholder="Set a password"
+            />
+            <p>
+              Already a User ? <Link to="/login">Login .</Link>
+            </p>
+            <button type="submit" onClick={handleRegisterUser} >
+              CONTINUE
+            </button>
           </div>
         </div>
       </div>
