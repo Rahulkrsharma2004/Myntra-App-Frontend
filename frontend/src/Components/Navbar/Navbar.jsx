@@ -20,7 +20,7 @@ const navbar = () => {
     console.log("first")
     try {
       console.log("second")
-      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/user/logout", {} , { withCredentials: true })
+      const response = await axios.post("http://localhost:8080/user/logout",{withCredentials : true})
       console.log(response)
       if (response.data == 'Logout Successfully'){
         setIsAuth(!isAuth)
