@@ -5,13 +5,13 @@
     background-color: rgba(0, 0, 0, 0.182);
   }
   .HomeCarousel {
-    padding-top: 8rem;
+    padding-top: 7rem;
     height: auto;
     width: 100%;
   }
   /* .imageslider{
     height: 400px;
-    width: 100rem;
+    width: auto;
 
   } */
   .homeCategories {
@@ -23,8 +23,8 @@
   }
   .homeColors {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    margin-bottom: 5rem;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 4rem;
   }
   .homeCategories > div img {
     width: 100%;
@@ -46,10 +46,14 @@
   .homeHeader {
     font-weight: 600;
     font-size: 29px;
+    text-align: center;
     letter-spacing: 5px;
     margin: 3rem 0 3rem 3rem;
     word-spacing: 2px;
     color: rgb(164, 33, 33);
+  }
+  .offerImg{
+    width: 100%;
   }
   @media (max-width: 1200px) {
     .homeHeader {

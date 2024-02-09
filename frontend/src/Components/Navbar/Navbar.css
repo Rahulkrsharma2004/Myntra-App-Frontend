@@ -7,7 +7,7 @@
     display: block;
     position: fixed;
     z-index: 99;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     box-shadow: rgba(100, 100, 111, 0.09) 0px 7px 20px 0px;
   }
   
@@ -72,7 +72,7 @@
   .menu > ul > li {
     display: inline-block;
     margin-left: 38px;
-    color: black;
+    color: rgb(219, 22, 22);
     font-size: 15px;
   }
   .menu > ul > li > a {
@@ -180,6 +180,10 @@
   .menuList ul li a {
     color: rgb(63, 63, 63);
   }
+  .menuList ul li a:hover{
+    text-decoration: underline;
+    color: rgb(12, 5, 221);
+  }
   .mobItem {
     display: none;
   }
@@ -198,6 +202,7 @@
     }
     .navSearch {
       display: none;
+      /* width: auto; */
     }
     .hide {
       display: flex;

@@ -1,12 +1,15 @@
 .profile {
     width: 100vw;
     padding: 6rem 0;
+    /* background-color: rgb(212, 167, 109); */
   }
   .profileCon {
     width: 650px;
-    border: 1px solid rgb(207, 207, 207);
+    /* border: 2px solid rgb(218, 202, 78); */
     margin: 5rem auto;
     padding: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    /* background-color: rgb(195, 186, 175); */
   }
   .profileImage {
     background-color: rgb(243, 243, 243);
@@ -34,16 +37,20 @@
     padding: 1rem 0;
     font-weight: 500;
     border-bottom: 1px solid rgb(162, 162, 162);
-    color: rgb(21, 21, 21);
+    color: rgb(0, 0, 0);
     margin: 1.5rem;
   }
   .profileDetails > div {
     display: flex;
     margin: 1.5rem;
-    color: rgb(114, 114, 114);
+    color: rgb(0, 0, 0);
   }
   .profileDetails > div > p:nth-child(1) {
     width: 40%;
+  }
+  .editProfileBtn:hover{
+    background-color: black;
+    color: white;
   }
   @media (max-width: 700px) {
     .profile {

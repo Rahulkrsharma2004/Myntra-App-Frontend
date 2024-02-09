@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { BiSearch, BiUser, BiHeart } from "react-icons/bi";
@@ -13,9 +14,29 @@ const navbar = () => {
   const [click, setClick] = useState(false);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
-  const {isAuth, setIsAuth} = useContext(Context);
-  setIsAuth(false)
+  const { isAuth, setIsAuth } = useContext(Context);
 
+  const handleLogout = async () => {
+    console.log("first")
+    try {
+      console.log("second")
+      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/user/logout", {} , { withCredentials: true })
+      console.log(response)
+      if (response.data == 'Logout Successfully'){
+        setIsAuth(!isAuth)
+        alert('Logout Successfully')
+        navigate("/")
+      }
+
+    } catch (error) {
+      console.log(error)
+      // if (error.response.data.message == 'Internal Server Error') {
+      //   alert("Internal Server Error")
+      // }
+    }
+
+
+  }
 
   const handleClick = (param = "", value = "") => {
     setClick(!click);
@@ -32,33 +53,25 @@ const navbar = () => {
       return navigate(`/product?keyword=${keyword.trim()}`);
     }
   };
-  // console.log(auth.data.isAuth)
+
   const styleA = { left: "-100%" };
   const styleB = { left: "0%" };
+
+
   const items = [
     {
       label: isAuth ? (
         <div>
-          <h4>Welcome</h4>
+          <h4 style={{ color: "green" }}>Welcome User</h4>
           <p>Access orders and many more !</p>
         </div>
       ) : (
         <div>
           <h4>Welcome</h4>
-          <p>To access orders and manage account</p>
+          <p>Create Your account</p>
         </div>
       ),
       key: "-1",
-    },
-    {
-      label: isAuth ? (
-        <p onClick={() => dispatch(authLogout())} p="10px">
-          Logout
-        </p>
-      ) : (
-        <Link padding="10px" to="/login">Login / Signup</Link>
-      ),
-      key: "0",
     },
     {
       type: "divider",
@@ -78,7 +91,7 @@ const navbar = () => {
       type: "divider",
     },
     {
-      label: <Link to="/wishlist">Wishlist</Link>,
+      label: <Link to="/wishlist" >Wishlist</Link>,
       key: "3",
     },
     {
@@ -88,7 +101,22 @@ const navbar = () => {
       label: <Link to="/profile">Account</Link>,
       key: "4",
     },
+
+    {
+      label: isAuth ? (
+        <p onClick={handleLogout} p="10px" style={{ color: "red" }}>
+          Logout
+        </p>
+      ) : (
+        <Link padding="10px" to="/login" style={{ color: "green" }}>Login / Signup</Link>
+      ),
+      key: "0",
+    },
+
   ];
+
+
+
   return (
     <div className="container">
       <div className="row v-center">
@@ -252,18 +280,13 @@ const navbar = () => {
               >
                 <Link to={`/product?categories=beautycare`}>BEAUTY</Link>
               </li>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/signup">Login / Signup</Link>
-              </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/admin">Admin</Link>
-              </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/profile">Profile</Link>
-              </p>
-              <p className="mobItem" onClick={handleClick}>
-                <Link to="/orders">Orders</Link>
-              </p>
+              <br />
+
+              <h3 style={{color:isAuth?"green":""}} className="mobItem">{isAuth?"Welcome User":""} </h3>
+             
+              <h4 className="mobItem" onClick={handleClick} >
+                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{ isAuth? "Logout" :"Login / Signup"}</Link>
+              </h4>
             </ul>
           </nav>
         </div>
@@ -286,19 +309,19 @@ const navbar = () => {
           <div className="navIcons hide">
             <BiSearch className="sideIcons" />
           </div>
-          <div className="navIcons display">
+          <div className="navIcons">
             <Dropdown
               menu={{ items, selectable: true, defaultSelectedKeys: ["0"] }}
               placement="bottom"
               trigger={["hover"]}
             >
-              <Link onClick={(e) => e.preventDefault()}>
-                <BiUser className="sideIcons" />
-                <p>Profile</p>
+              <Link onClick={(e) => e.preventDefault()} style={{ color: isAuth ? "green" : "" }}>
+                <BiUser className="sideIcons" style={{ color: isAuth ? "green" : "" }} />
+                <p className="display">Profile</p>
               </Link>
             </Dropdown>
           </div>
-          <div className="navIcons">
+          <div className="navIcons display">
             <Link to="/wishlist">
               <BiHeart className="sideIcons" />
               <p className="display">Wishlist</p>

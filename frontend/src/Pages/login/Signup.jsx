@@ -8,11 +8,11 @@ const Signup = () => {
 
   const [userDetails, setUserDetails] = useState({ username: "", email: "", pass: "" })
   const nevigate = useNavigate()
-  const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    pass: ""
-  });
+  // const [errors, setErrors] = useState({
+  //   name: "",
+  //   email: "",
+  //   pass: ""
+  // });
 
   const handleUserDetails = (e) => {
     const { name, value } = e.target
@@ -22,34 +22,34 @@ const Signup = () => {
       [name]: value
     }));
 
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: ""
-    }));
+    // setErrors((prevErrors) => ({
+    //   ...prevErrors,
+    //   [name]: ""
+    // }));
   }
 
-  const validateForm = () => {
-    let valid = true;
-    const newErrors = {};
+  // const validateForm = () => {
+  //   let valid = true;
+  //   const newErrors = {};
 
-    if (userDetails.name.trim() === "") {
-      newErrors.name = "Name is required";
-      valid = false;
-    }
+  //   if (userDetails.name.trim() === "") {
+  //     newErrors.name = "Name is required";
+  //     valid = false;
+  //   }
 
-    if (userDetails.email.trim() === "") {
-      newErrors.email = "Email is required";
-      valid = false;
-    }
+  //   if (userDetails.email.trim() === "") {
+  //     newErrors.email = "Email is required";
+  //     valid = false;
+  //   }
 
-    if (userDetails.password.trim() === "") {
-      newErrors.password = "Password is required";
-      valid = false;
-    }
+  //   if (userDetails.password.trim() === "") {
+  //     newErrors.password = "Password is required";
+  //     valid = false;
+  //   }
 
-    setErrors(newErrors);
-    return valid;
-  };
+  //   setErrors(newErrors);
+  //   return valid;
+  // };
 
   const handleRegisterUser = async () => {
    
@@ -57,20 +57,23 @@ const Signup = () => {
         let response = await axios.post("https://myntra-app-backend-production.up.railway.app/user/register", userDetails, { withCredentials: true })
         console.log(response)
 
-        // if (response.data.msg == 'New user has been created') {
-        //   alert("Registered Successfully")
-        //   nevigate("/")
-        // }
+        if (response.data.msg == 'New user has been created') {
+          alert("Registered Successfully")
+          nevigate("/login")
+        }
+
+        if (response.data.error == 'User with this email already exists') {
+          alert("User with this email already exists")
+        }
+
+        if (response.data.error == 'Invalid password format') {
+          alert("Invalid password format")
+        }
 
  
       } catch (error) {
         console.log(error.message)
-        // if (error.data.error == 'Invalid password format') {
-        //   alert("Invalid password format")
-        // }
-        // if (error.response.data.error == 'User with this email already exists') {
-        //   alert("User with this email already exists")
-        // }
+       
       }
   
 
@@ -90,7 +93,7 @@ const Signup = () => {
           </div>
           <div>
             <input
-              name="name"
+              name="username"
               value={userDetails.name}
               onChange={handleUserDetails}
               type="text"
@@ -106,7 +109,7 @@ const Signup = () => {
               placeholder="Enter email"
             />
             <input
-              name="password"
+              name="pass"
               value={userDetails.password}
               onChange={handleUserDetails}
               required

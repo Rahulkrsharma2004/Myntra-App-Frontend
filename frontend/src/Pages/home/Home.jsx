@@ -12,19 +12,18 @@ import sliderimg3 from "../../assets/slide3.webp"
 import sliderimg4 from "../../assets/slide4.webp"
 import sliderimg5 from "../../assets/slide5.webp"
 import sliderimg6 from "../../assets/slide6.webp"
-import cardimg1 from "../../assets/img1.jpg"
-import cardimg2 from "../../assets/img2.webp"
-import cardimg3 from "../../assets/img3.webp"
-import cardimg4 from "../../assets/img4.webp"
-import cardimg5 from "../../assets/img5.webp"
-import cardimg6 from "../../assets/img6.jpg"
-import cardimg7 from "../../assets/img7.webp"
-import cardimg8 from "../../assets/img8.jpg"
-import cardimg9 from "../../assets/img9.webp"
-import cardimg10 from "../../assets/img10.webp"
-import cardimg11 from "../../assets/img11.webp"
-import cardimg12 from "../../assets/img12.webp"
-import cardimg13 from "../../assets/img13.jpg"
+import cardimg1 from "../../assets/img1.jpeg"
+import cardimg2 from "../../assets/img2.jpeg"
+import cardimg3 from "../../assets/img3.jpeg"
+import cardimg4 from "../../assets/img4.jpeg"
+import cardimg5 from "../../assets/img5.jpeg"
+import cardimg6 from "../../assets/img6.jpeg"
+import cardimg7 from "../../assets/img7.jpeg"
+import cardimg8 from "../../assets/img8.jpeg"
+import cardimg9 from "../../assets/img9.jpeg"
+import cardimg10 from "../../assets/img10.jpeg"
+import cardimg11 from "../../assets/img11.jpeg"
+import cardimg12 from "../../assets/img12.jpeg"
 
 
 
@@ -101,14 +100,16 @@ const Home = () => {
 
   return (
     <div>
+      
       <MetaData title={"Home Page"} />
+      
       <div className="HomeCarousel">
         <Carousel infiniteLoop autoPlay>
           <div className="imageslider">
-            <img src={sliderimg1} alt="images" className="slideimg"/>
+            <img src={sliderimg2} alt="images" className="slideimg"/>
           </div>
           <div className="imageslider">
-            <img src={sliderimg2} alt="images" />
+            <img src={sliderimg1} alt="images" />
           </div>
           <div className="imageslider">
             <img src={sliderimg3} alt="images" />
@@ -124,6 +125,10 @@ const Home = () => {
           </div>
           
         </Carousel>
+      </div>
+      <div style={{width:"auto"}}>
+        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_600,c_limit,fl_progressive/assets/images/retaillabs/2023/2/17/32b8f01e-4b71-446b-b103-668ed70873c71676653509048-M-Express-3-Days.gif" alt="" className="offerImg"/>
+        <img src="https://assets.myntassets.com/f_webp,dpr_1.5,q_auto:eco,w_600,c_limit,fl_progressive/assets/images/retaillabs/2023/2/22/6d1c4d3d-6fd9-4b52-8dc0-4c8b7e2453e61677061466410-RTB--4-.jpg" alt="" className="offerImg"/>
       </div>
       <p className="homeHeader">CATEGORIES TO CARRY</p>
       <div className="homeCategories">
@@ -189,6 +194,7 @@ const Home = () => {
           <Link><img src="https://assets.myntassets.com/f_webp,w_122,c_limit,fl_progressive,dpr_2.0/assets/images/2022/2/23/f9ca5609-b634-42d4-8c08-a8eaebb818b71645602467085-Sarees.jpg" alt="" /></Link>
         </div>
       </div>
+      <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/1/7b00a2f0-2c8f-47f8-938d-85617a3e75e91706788625897-FLAT-400-Off-on-1st-Purchase-Strip-----3.jpg" alt="" className="offerImg"/>
       <p className="homeHeader">BRANDS ON THE WAY UP</p>
       <div className="homeColors">
         <div>
@@ -249,10 +255,21 @@ const Home = () => {
         </div>
         <div>
           <Link>
-            <img src={cardimg13} alt="" />
+            <img src={cardimg9} alt="" />
+          </Link>
+        </div>
+        <div>
+          <Link>
+            <img src={cardimg1} alt="" />
+          </Link>
+        </div>
+        <div>
+          <Link>
+            <img src={cardimg4} alt="" />
           </Link>
         </div>
       </div>
+      <img src="https://assets.myntassets.com/f_webp,w_980,c_limit,fl_progressive,dpr_2.0/assets/images/2024/2/1/9eb6dcc4-a508-47ce-a6c4-dcfab0c991821706788570836-App-Install-Banner-----3.jpg" alt="" className="offerImg"/>
     </div>
   );
 };

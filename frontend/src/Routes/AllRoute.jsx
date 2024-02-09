@@ -1,10 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Navbar from "../Components/Navbar/Navbar";
+import Navbar from "../Components/Navbar/navbar";
 import Login from "../Pages/login/Login";
 import Footer from "../Components/Footer/Footer";
 import Home from "../Pages/home/Home";
-import Admin from "../Pages/admin/Admin";
 import Profile from "../Pages/profile/Profile";
 import Signup from "../Pages/login/Signup";
 import Wishlist from "../Pages/wishlist/Wishlist";
@@ -20,7 +19,6 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/bag" element={<Bag />}></Route>

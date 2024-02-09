@@ -9,6 +9,7 @@ const Login = () => {
 
     const [userDetails, setUserDetails] = useState({ email: "", pass: "" })
     const { isAuth, setIsAuth } = useContext(Context)
+    const { user, setUser } = useContext(Context)
     const nevigate = useNavigate()
     const handleUserDetails = (e) => {
         const { name, value } = e.target
@@ -22,12 +23,14 @@ const Login = () => {
     const handleLoginUser = async () => {
         try {
             let response = await axios.post("https://myntra-app-backend-production.up.railway.app/user/login", userDetails, { withCredentials: true })
-            console.log(response.data.token)
-            Cookies.set("token", response.data.token)
+            console.log(response.data.ACCESS_TOKEN)
+            console.log(response)
+            Cookies.set("ACCESS_TOKEN", response.data.ACCESS_TOKEN)
             if (response.data.msg == 'Login Successful') {
                 alert("Login Successfully")
                 nevigate("/")
                 setIsAuth(!isAuth)
+                setUser(!user)
             }
             if (response.data.msg == 'Register first or Wrong crendential') {
                 alert("Register first or Wrong crendential")
@@ -35,9 +38,6 @@ const Login = () => {
 
         } catch (error) {
             console.log(error)
-            if (error.response.data == 'User not found') {
-                alert("User not found Plz signup first")
-            }
             if (error.response.data == 'User not found') {
                 alert("User not found Plz signup first")
             }
@@ -65,11 +65,11 @@ const Login = () => {
                             placeholder="Enter email"
                         />
                         <input
-                            name="password"
-                            value={userDetails.password}
+                            name="pass"
+                            value={userDetails.pass}
                             onChange={handleUserDetails}
                             type="password"
-                            required
+                            required:true
                             placeholder="Set a password"
                         />
                         <p>
