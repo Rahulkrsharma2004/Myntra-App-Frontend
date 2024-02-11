@@ -10,7 +10,7 @@ import { RiAdminLine } from "react-icons/ri";
 import { Dropdown } from "antd";
 import { Context } from "../../Contexts/AuthContext";
 
-const navbar = () => {
+const Navbar = () => {
   const [click, setClick] = useState(false);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
@@ -293,4 +293,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default Navbar;
