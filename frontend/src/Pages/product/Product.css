@@ -4,7 +4,7 @@
   .proContainer {
     width: 100%;
     margin: auto;
-    padding: 6rem 1.3rem 0.5rem 1.3rem;
+    padding: 9rem 1.3rem 0.5rem 1.3rem;
     border-bottom: 1px solid rgb(231, 231, 231);
   }
   .proNavigation {
@@ -28,19 +28,22 @@
   .proSort {
     display: flex;
     justify-content: flex-end;
-    color: rgb(42, 42, 42);
+    color: rgb(4, 4, 4);
     margin-top: -50px;
     margin-bottom: 5px;
     align-items: center;
+    /* background-color: blue; */
   }
   .proSort > div {
     display: flex;
     gap: 10px;
+    /* background-color: rgb(202, 111, 0); */
   }
   .proBox {
     display: flex;
     width: 100%;
     overflow-y: auto;
+    background-color: rgb(255, 255, 255);
   }
   .proBox::-webkit-scrollbar {
     display: none;
@@ -75,10 +78,13 @@
     padding: 3rem 0 3rem 0;
   }
   .pagination button {
-    border: 1px solid rgb(188, 185, 186);
-    font-size: 17px;
-    background-color: #fff;
-    padding: 10px 15px;
+    border: 1px solid rgb(112, 69, 84);
+    font-size: 15px;
+    background-color: #ffffff;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
   }
   
   @media (max-width: 720px) {

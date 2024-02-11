@@ -132,17 +132,22 @@
     background-color: #ff3f6c;
   }
   .addToCart:hover {
-    background-color: #f75177;
+    background-color: #ff97b5;
+    color: rgb(51, 42, 42);
   }
   .addToList {
-    background-color: white;
-    border: 1px solid rgb(195, 195, 195);
+    background-color: #ff3f6c;
+    border: 1px solid rgb(0, 0, 0);
+    color: white;
   }
   .addToList:hover {
-    border: 1px solid rgb(47, 47, 47);
+    /* border: 1px solid rgb(138, 70, 70); */
+    background-color: #ff97b5;
+    color: rgb(51, 42, 42);
   }
+  
   .singleProDescription {
-    padding: 1rem 1rem 1rem 0;
+    padding: 1rem 1rem 10rem 0;
   }
   .singleProDescription > h3 {
     margin-bottom: 10px;

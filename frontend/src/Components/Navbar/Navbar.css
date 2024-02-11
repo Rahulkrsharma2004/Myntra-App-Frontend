@@ -160,14 +160,17 @@
   .menuColumn {
     max-width: 1100px;
     max-height: 500px;
-    height: 350px;
-    width: 80%;
+    height: 230px;
+    width: 70%;
     display: flex;
     justify-content: space-between;
   }
   .menuList {
     flex: 0 0 20%;
     padding: 0 10px;
+  }
+  .menuList img{
+    height: 200px;
   }
   .menuList p {
     color: #f73dbf;

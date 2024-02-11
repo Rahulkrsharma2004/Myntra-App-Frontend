@@ -1,92 +1,95 @@
 import React, { useEffect, useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-// import { getProductDetails } from "../../Redux/product/action";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination";
-// import { Pagination } from "swiper";
 import { Slider } from "antd";
 import "./SingleProduct.css";
 import { RiStarSFill } from "react-icons/ri";
 import { BiHeart, BiDetail } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import axios from "axios";
+
 const SingleProduct = () => {
-  let { id } = useParams();
+  const { id } = useParams();
+  console.log(id)
+  const [product, setProduct] = useState(null);
   const [proQuantity, setQuantity] = useState(1);
-  const dispatch = useDispatch();
-  const alreadyAdded = true;
-  const { product, pro_loading: loading } = useSelector(
-    (store) => store.products
-  );
-  let image = [];
-  if (product) {
-    for (let key in product.images) {
-      image.push(product.images[key]);
-    }
-  }
+  const [loading, setLoading] = useState(true);
+  // console.log(product)
   useEffect(() => {
-    dispatch(getProductDetails(id));
-  }, [id, dispatch]);
+    const fetchProduct = async () => {
+      try {
+        let response = await axios.get(`https://myntra-app-backend-production.up.railway.app/product?_id=${id}`);
+        response=response.data.products.filter(ele=>{
+            console.log(id,"line 23")
+            console.log(ele._id,"line 24")
+          if(id == ele._id){
+            
+            return response
+            
+          }
+        })
+        console.log(response,"line 26")
+        setProduct(response);
+        // console.log(response.data.products)
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   if (loading) {
     return "Loading...";
   }
+
+  if (!product) {
+    return "Product not found";
+  }
+
   return (
     <div className="singleProComponent">
-      <div className="singleProNavigation">
-        Home / {product.gender} /{" "}
-        <span>
-          {product.categories ? product.categories : product.category} /{" "}
-          {product.brand}
-        </span>
-      </div>
+      <div className="singleProNavigation"></div>
       <div className="singlePro">
         <div className="singleProGallery">
-          <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
-            {image?.map((e, i) => {
-              return (
-                <SwiperSlide className="swipeImage" key={i}>
-                  <img src={e} alt="images" />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          <img src={product[0].image} alt="Product" />
         </div>
         <div className="singleProDetails">
           <div className="singleProName">
-            <h2>{product.brand}</h2>
-            <h2>{product.title}</h2>
+            <h2>{product[0].brand}</h2>
+            <h2>{product[0].title}</h2>
             <p>
-              <span> {product.rating} </span>
-              <RiStarSFill className="itemStars" /> | {product.count} Reviews
+              <RiStarSFill className="itemStars" /> | {product.reviews} Reviews
             </p>
           </div>
           <div className="singleItemDetails">
             <div>
-              Rs. {product.price} <s>Rs. {product.off_price}</s>
+              Rs. {product[0].price} <s>Rs. {product.oldPrice}</s>
               <span>({product.discount}% OFF)</span>
             </div>
             <p>Inclusive of all taxes</p>
-            <h5 style={{ color: product.stock ? "#14958f" : "red" }}>
-              Status : {product.stock ? "InStock" : "Out Of Stock"}
+            <h5 style={{ color: product.inStock ? "red" : "#14958f" }}>
+              Status : {product.inStock ? "Out Of Stock" : "In Stock"}
             </h5>
+          </div>
+          <div className="sizeInfo">
+            <h3>SIZE:{product[0].sizes}</h3>
           </div>
           <div className="singleProQuantity">
             <p>Select Quantity : {proQuantity}</p>
             <Slider
               defaultValue={1}
-              max={product.stock > 20 ? 20 : product.stock}
-              onChange={(e) => setQuantity(e)}
+              max={product.inStock ? 20 : 0}
+              onChange={setQuantity}
             />
           </div>
           <div className="singleProButtons">
             <button className="addToCart">
               <HiOutlineShoppingBag className="singleProIcons" />
-              {alreadyAdded ? "GO TO BAG" : "ADD TO BAG"}
+              {product.alreadyAdded ? "GO TO BAG" : "ADD TO BAG"}
             </button>
             <button className="addToList">
-              {" "}
               <BiHeart className="singleProIcons" />
               WISHLIST
             </button>
@@ -95,13 +98,11 @@ const SingleProduct = () => {
             <h3>
               PRODUCT DETAILS <BiDetail />
             </h3>
-            <p>{product.description}</p>
-            <h4>Color : {product.color}</h4>
-            {product.size ? <h4>{product.size}</h4> : null}
+            <p>{product[0].description}</p>
+            {product.size && <h4>Size: {product.size}</h4>}
           </div>
         </div>
       </div>
-      <div className="singleProReviews"></div>
     </div>
   );
 };

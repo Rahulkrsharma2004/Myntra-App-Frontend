@@ -20,9 +20,9 @@ const navbar = () => {
     console.log("first")
     try {
       console.log("second")
-      const response = await axios.post("http://localhost:8080/user/logout",{withCredentials : true})
+      const response = await axios.post("http://localhost:8080/user/logout", { withCredentials: true })
       console.log(response)
-      if (response.data == 'Logout Successfully'){
+      if (response.data == 'Logout Successfully') {
         setIsAuth(!isAuth)
         alert('Logout Successfully')
         navigate("/")
@@ -42,15 +42,13 @@ const navbar = () => {
     setClick(!click);
     if (param === "" || value === "") {
       setClick(!click);
-    } else if (param === "all") {
-      return navigate("/product");
     } else {
       return navigate(`/product?${param}=${value}`);
     }
   };
   const handleSearchClick = () => {
     if (keyword.trim()) {
-      return navigate(`/product?keyword=${keyword.trim()}`);
+      return navigate(`/product?category=${keyword.trim()}`);
     }
   };
 
@@ -140,33 +138,21 @@ const navbar = () => {
 
               <li
                 className="menuItem"
-                onClick={() => handleClick("all", "all")}
+                onClick={() => handleClick("", "")}
               >
-                <Link to={`/product`}>ALL</Link>
+                <Link>ALL</Link>
                 <div className="subMenu megaMenu menuColumn">
                   <div className="menuList">
                     <ul>
                       <p>Men</p>
-                      <li>
-                        <Link>T-Shirts</Link>
+                      <li onClick={() => handleClick("subcategory", "T-shirts")}>
+                        <Link to={`/product?subcategories=T-shirts`} >T-Shirts</Link>
                       </li>
-                      <li>
-                        <Link>Jackets</Link>
+                      <li onClick={() => handleClick("subcategory", "Flip Flops")}>
+                        <Link to={`/product?subcategories=Flip-Flops`} >Flip Flops</Link>
                       </li>
-                      <li>
-                        <Link>Sweaters</Link>
-                      </li>
-                      <li>
-                        <Link>Sweatshirts</Link>
-                      </li>
-                      <li>
-                        <Link>Flip Flops</Link>
-                      </li>
-                      <li>
-                        <Link>Boxers</Link>
-                      </li>
-                      <li>
-                        <Link>Jeans</Link>
+                      <li onClick={() => handleClick("subcategory", "Jeans")}>
+                        <Link to={`/product?subcategories=Jeans`} >Jeans</Link>
                       </li>
                     </ul>
                   </div>
@@ -180,19 +166,7 @@ const navbar = () => {
                         <Link>Sarees</Link>
                       </li>
                       <li>
-                        <Link>Palazzos</Link>
-                      </li>
-                      <li>
-                        <Link>Jackets</Link>
-                      </li>
-                      <li>
-                        <Link>Jeans</Link>
-                      </li>
-                      <li>
-                        <Link>Jumpsuits</Link>
-                      </li>
-                      <li>
-                        <Link>Shrugs</Link>
+                        <Link>Heels</Link>
                       </li>
                     </ul>
                   </div>
@@ -203,22 +177,10 @@ const navbar = () => {
                         <Link>T-Shirts</Link>
                       </li>
                       <li>
-                        <Link>Shorts</Link>
-                      </li>
-                      <li>
-                        <Link>Thermals</Link>
-                      </li>
-                      <li>
-                        <Link>Nightwear</Link>
-                      </li>
-                      <li>
                         <Link>Party Wear</Link>
                       </li>
                       <li>
                         <Link>Trousers</Link>
-                      </li>
-                      <li>
-                        <Link>Jeans</Link>
                       </li>
                     </ul>
                   </div>
@@ -226,25 +188,13 @@ const navbar = () => {
                     <ul>
                       <p>Beauty</p>
                       <li>
-                        <Link>Makeup</Link>
+                        <Link>Face Wash</Link>
                       </li>
                       <li>
                         <Link>Lipstick</Link>
                       </li>
                       <li>
-                        <Link>Mascara</Link>
-                      </li>
-                      <li>
-                        <Link>Foundation</Link>
-                      </li>
-                      <li>
-                        <Link>Nail Polish</Link>
-                      </li>
-                      <li>
-                        <Link>Eyeshadow</Link>
-                      </li>
-                      <li>
-                        <Link>Hair Oil</Link>
+                        <Link>Beauty Gift</Link>
                       </li>
                     </ul>
                   </div>
@@ -258,34 +208,34 @@ const navbar = () => {
               </li>
               <li
                 className="menuItem"
-                onClick={() => handleClick("gender", "men")}
+                onClick={() => handleClick("category", "Men")}
               >
-                <Link to={`/product?gender=men`}>MEN</Link>
+                <Link to={`/product?categories=men`}>MEN</Link>
               </li>
               <li
                 className="menuItem"
-                onClick={() => handleClick("gender", "women")}
+                onClick={() => handleClick("category", "Women")}
               >
-                <Link to={`/product?gender=women`}>WOMEN</Link>
+                <Link to={`/product?categories=women`}>WOMEN</Link>
               </li>
               <li
                 className="menuItem"
-                onClick={() => handleClick("gender", "kids")}
+                onClick={() => handleClick("category", "Kids")}
               >
-                <Link to={`/product?gender=kids`}>KIDS</Link>
+                <Link to={`/product?categories=kids`}>KIDS</Link>
               </li>
               <li
                 className="menuItem"
-                onClick={() => handleClick("categories", "beautycare")}
+                onClick={() => handleClick("category", "Beauty")}
               >
                 <Link to={`/product?categories=beautycare`}>BEAUTY</Link>
               </li>
               <br />
 
-              <h3 style={{color:isAuth?"green":""}} className="mobItem">{isAuth?"Welcome User":""} </h3>
-             
+              <h3 style={{ color: isAuth ? "green" : "" }} className="mobItem">{isAuth ? "Welcome User" : ""} </h3>
+
               <h4 className="mobItem" onClick={handleClick} >
-                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{ isAuth? "Logout" :"Login / Signup"}</Link>
+                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{isAuth ? "Logout" : "Login / Signup"}</Link>
               </h4>
             </ul>
           </nav>
@@ -330,7 +280,7 @@ const navbar = () => {
           <div className="navIcons">
             <Link to="/bag">
               <HiOutlineShoppingBag className="sideIcons" />
-              <span>1</span>
+              {/* <span></span> */}
               <p className="display">Bag</p>
             </Link>
           </div>
