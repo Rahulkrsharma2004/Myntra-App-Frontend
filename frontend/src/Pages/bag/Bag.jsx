@@ -9,9 +9,9 @@ const Bag = () => {
   const { isAuth, setIsAuth } = useContext(Context)
   const [bagData, setBagData] = useState([])
 
-  // if (!isAuth) {
-  //   return <Cart />
-  // }
+  if (!isAuth) {
+    return <Cart />
+  }
 
   const showCartData = async () => {
     try {
