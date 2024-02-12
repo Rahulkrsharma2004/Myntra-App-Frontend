@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,useContext} from "react";
 import { useParams } from "react-router-dom";
 import { Slider } from "antd";
 import "./SingleProduct.css";
@@ -6,8 +6,14 @@ import { RiStarSFill } from "react-icons/ri";
 import { BiHeart, BiDetail } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import axios from "axios";
+import Login from "../../Components/Login/Login";
+import { Context } from "../../Contexts/AuthContext";
 
 const SingleProduct = () => {
+  const { isAuth, setIsAuth } = useContext(Context)
+  if (!isAuth) {
+    return <Login />
+  }
   const { id } = useParams();
   console.log(id)
   const [product, setProduct] = useState([]);
