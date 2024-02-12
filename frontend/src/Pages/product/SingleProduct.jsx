@@ -55,6 +55,9 @@ const SingleProduct = () => {
 
   const handleAddBag = async(id) => {
       try {
+        if (!isAuth) {
+          return <Login />
+        }
         const res = await axios.post(`https://myntra-app-backend-production.up.railway.app/cart/add/${id}`,{withCredentials:true})
         console.log(res)
         if(res.data.message == "Product Added Successfully"){
