@@ -222,7 +222,8 @@
   }
   @media (max-width: 440px) {
     .singleProGallery {
-      height: auto;
+      height: 300px;
+      width: 300px;
     }
     .swipeImage {
       height: auto;

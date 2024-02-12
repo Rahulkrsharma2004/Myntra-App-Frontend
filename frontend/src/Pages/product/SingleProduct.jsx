@@ -19,8 +19,6 @@ const SingleProduct = () => {
       try {
         let response = await axios.get(`https://myntra-app-backend-production.up.railway.app/product?_id=${id}`);
         response = response.data.products.filter(ele => {
-          console.log(id, "line 23")
-          console.log(ele._id, "line 24")
           if (id == ele._id) {
 
             return response
@@ -46,6 +44,19 @@ const SingleProduct = () => {
 
   if (!product) {
     return "Product not found";
+  }
+
+
+  const handleAddBag = async(id) => {
+      try {
+        const res = await axios.post(`https://myntra-app-backend-production.up.railway.app/cart/add/${id}`,{withCredentials:true})
+        console.log(res)
+        if(res.data.message == "Product Added Successfully"){
+          alert("Product Added Successfully")
+        }
+      } catch (error) {
+        console.log(error)
+      }
   }
 
   return (
@@ -76,7 +87,7 @@ const SingleProduct = () => {
           <h3>SIZE:</h3>
           <div className="sizeOptions">
             {product[0].sizes.map((size, index) => (
-              <span key={index} style={{ marginRight: '20px',color:"red",cursor:"pointer" }}>{size}</span>
+              <span key={index} style={{ marginRight: '20px', color: "red", cursor: "pointer" }}>{size}</span>
             ))}
           </div>
 
@@ -89,7 +100,7 @@ const SingleProduct = () => {
             />
           </div>
           <div className="singleProButtons">
-            <button className="addToCart">
+            <button className="addToCart" onClick={() => handleAddBag(id)} >
               <HiOutlineShoppingBag className="singleProIcons" />
               {product.alreadyAdded ? "GO TO BAG" : "ADD TO BAG"}
             </button>

@@ -7,8 +7,8 @@ const cart = () => {
       <img src="https://constant.myntassets.com/checkout/assets/img/empty-bag.webp" alt="img" />
       <h3>Het, It feels so light !</h3>
       <p>There is nothing in your bag. Lets add something.</p>
-      <Link to="/wishlist">
-        <button>ADD ITEMS FROM WISHLIST</button>
+      <Link to="/">
+        <button>ADD ITEMS FROM HOME</button>
       </Link>
     </div>
   );
