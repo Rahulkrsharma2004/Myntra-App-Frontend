@@ -41,7 +41,7 @@
 //       }
 //       endpoint += `&page=${page}`; 
 //       const response = await axios.get(endpoint, { withCredentials: true });
-     
+
 //       setProducts(response.data.products);
 //       console.log(response.data.products,"line 46");
 //       setTotalPages(response.data.totalPage); 
@@ -68,7 +68,7 @@
 //     setPage((prevPage) => Math.min(prevPage + 1, 2)); 
 //   };
 
-  
+
 
 //   return (
 //     <div className="productCon">
@@ -141,10 +141,10 @@
 import React, { useEffect, useState } from "react";
 import "./Product.css";
 import { Select, Skeleton } from "antd";
-import { useLocation} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ProComp from "../../Components/Product/Product";
 import axios from "axios";
-import { Box, VStack, Radio, RadioGroup, Divider, Text, CheckboxGroup, Checkbox, HStack } from '@chakra-ui/react'
+import { Box, VStack, Stack, Radio, RadioGroup, Divider, Text, CheckboxGroup, Checkbox, HStack } from '@chakra-ui/react'
 import { useSearchParams } from "react-router-dom"
 
 const Product = () => {
@@ -158,7 +158,9 @@ const Product = () => {
   const [sortBy, setSortBy] = useState(null);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
+    
+  console.log(products)
+   
   useEffect(() => {
     setPrevCategory(category);
     setPage(1);
@@ -181,11 +183,11 @@ const Product = () => {
       if (category && category !== "") {
         endpoint += `?category=${category}`;
       }
-      endpoint += `&page=${page}`; 
+      endpoint += `&page=${page}`;
       const response = await axios.get(endpoint, { withCredentials: true });
-     
+
       setProducts(response.data.products);
-      setTotalPages(response.data.totalPage); 
+      setTotalPages(response.data.totalPage);
       setProLoading(false);
     } catch (error) {
       console.log("Error fetching products:", error);
@@ -195,18 +197,18 @@ const Product = () => {
 
   useEffect(() => {
     getProducts();
-  }, [category, sortBy, page]); 
+  }, [category, sortBy, page]);
 
   const handleSortChange = (value) => {
     setSortBy(value);
   };
 
   const handlePrevPage = () => {
-    setPage((prevPage) => Math.max(prevPage - 1, 1)); 
+    setPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const handleNextPage = () => {
-    setPage((prevPage) => Math.min(prevPage + 1, 2)); 
+    setPage((prevPage) => Math.min(prevPage + 1, 2));
   };
 
   const handleType = (el) => {
@@ -246,12 +248,12 @@ const Product = () => {
       </div>
       <div className="proBox">
         <div className="proFilters">
-          <VStack alignItems={"flex-start"} spacing={1} position={"sticky"}  bottom={"1000px"}>
+          <VStack alignItems={"flex-start"} spacing={1} position={"sticky"} bottom={"1000px"}>
             <HStack mt={"8px"} pl={4} fontWeight={700}>FILTERS</HStack>
             <Divider />
             <Box pl={4}>
               <RadioGroup onChange={handleType} value={searchParams.get("type")} colorScheme={"pink"} size={"sm"}>
-                
+
               </RadioGroup>
             </Box>
             <Divider />
@@ -275,37 +277,38 @@ const Product = () => {
             <Box pl={4}>
               <Text fontSize={"14px"} fontWeight={700} color="#282c3f" textAlign={"left"}>BRAND</Text>
               <CheckboxGroup size={"sm"} colorScheme={"pink"} onChange={handleBrand} defaultValue={searchParams.getAll("brand")}>
-                <VStack alignItems={"flex-start"} mt={1} spacing={1}>
-                  <Checkbox value={"Puma"}>Puma</Checkbox>
+                <Stack alignItems={"flex-start"} mt={1} spacing={1} colorScheme={"blue"} >
+                  <Checkbox colorScheme={"blue"} value={"Puma"}>Puma</Checkbox>
                   <Checkbox value={"Levis"}>Levis</Checkbox>
                   <Checkbox value={"Mewar"}>Mewar</Checkbox>
                   <Checkbox value={"Turtle"}>Turtle</Checkbox>
-                </VStack>
+                </Stack>
               </CheckboxGroup>
             </Box>
           </VStack>
         </div>
         {proLoading ? (
           <div className="proGrid">
-            {[...Array(20)].map((_, i) => (
-              <div className="proSkeleton" key={i}>
+            {products.map((pro, ind) => (
+              <div className="proSkeleton" key={ind}>
                 <Skeleton active />
               </div>
             ))}
           </div>
         ) : (
           <div className="proGrid">
-            {products.map((pro, i) => (
-              <ProComp product={pro} key={i} />
+            {products.map((pro, ind) => (
+              <ProComp product={pro} key={ind} />
             ))}
           </div>
         )}
+
       </div>
-      <div className="pagination">
+      {/* <div className="pagination">
         <button disabled={page === 1} onClick={handlePrevPage}>Prev</button>
         <span>{page}</span>
         <button disabled={page === totalPages} onClick={handleNextPage}>Next</button>
-      </div>
+      </div> */}
     </div>
   );
 };

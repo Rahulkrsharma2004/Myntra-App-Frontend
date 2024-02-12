@@ -1,11 +1,13 @@
 .productCon {
     width: 100%;
+    /* background-color: red; */
   }
   .proContainer {
     width: 100%;
     margin: auto;
     padding: 9rem 1.3rem 0.5rem 1.3rem;
     border-bottom: 1px solid rgb(231, 231, 231);
+    /* background-color: red; */
   }
   .proNavigation {
     font-size: 14px;

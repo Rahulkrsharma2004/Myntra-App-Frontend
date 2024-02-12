@@ -137,13 +137,14 @@
   }
   .addToList {
     background-color: #ff3f6c;
-    border: 1px solid rgb(0, 0, 0);
+    /* border: 1px solid rgb(22, 178, 43); */
     color: white;
+    border: none;
   }
   .addToList:hover {
     /* border: 1px solid rgb(138, 70, 70); */
     background-color: #ff97b5;
-    color: rgb(51, 42, 42);
+    color: rgb(159, 22, 22);
   }
   
   .singleProDescription {

@@ -10,24 +10,24 @@ import axios from "axios";
 const SingleProduct = () => {
   const { id } = useParams();
   console.log(id)
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState([]);
   const [proQuantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
-  // console.log(product)
+  console.log(product)
   useEffect(() => {
     const fetchProduct = async () => {
       try {
         let response = await axios.get(`https://myntra-app-backend-production.up.railway.app/product?_id=${id}`);
-        response=response.data.products.filter(ele=>{
-            console.log(id,"line 23")
-            console.log(ele._id,"line 24")
-          if(id == ele._id){
-            
+        response = response.data.products.filter(ele => {
+          console.log(id, "line 23")
+          console.log(ele._id, "line 24")
+          if (id == ele._id) {
+
             return response
-            
+
           }
         })
-        console.log(response,"line 26")
+        console.log(response, "line 26")
         setProduct(response);
         // console.log(response.data.products)
         setLoading(false);
@@ -73,9 +73,13 @@ const SingleProduct = () => {
               Status : {product.inStock ? "Out Of Stock" : "In Stock"}
             </h5>
           </div>
-          <div className="sizeInfo">
-            <h3>SIZE:{product[0].sizes}</h3>
+          <h3>SIZE:</h3>
+          <div className="sizeOptions">
+            {product[0].sizes.map((size, index) => (
+              <span key={index} style={{ marginRight: '20px',color:"red",cursor:"pointer" }}>{size}</span>
+            ))}
           </div>
+
           <div className="singleProQuantity">
             <p>Select Quantity : {proQuantity}</p>
             <Slider
@@ -89,7 +93,7 @@ const SingleProduct = () => {
               <HiOutlineShoppingBag className="singleProIcons" />
               {product.alreadyAdded ? "GO TO BAG" : "ADD TO BAG"}
             </button>
-            <button className="addToList">
+            <button className="addToList" disabled={true}>
               <BiHeart className="singleProIcons" />
               WISHLIST
             </button>
