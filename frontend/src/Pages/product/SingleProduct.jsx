@@ -1,4 +1,4 @@
-import React, { useEffect, useState ,useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Slider } from "antd";
 import "./SingleProduct.css";
@@ -11,9 +11,9 @@ import { Context } from "../../Contexts/AuthContext";
 
 const SingleProduct = () => {
   const { isAuth, setIsAuth } = useContext(Context)
-  if (!isAuth) {
-    return <Login />
-  }
+  // if (!isAuth) {
+  //   return <Login />
+  // }
   const { id } = useParams();
   console.log(id)
   const [product, setProduct] = useState([]);
@@ -53,19 +53,18 @@ const SingleProduct = () => {
   }
 
 
-  const handleAddBag = async(id) => {
-      try {
-        if (!isAuth) {
-          return <Login />
-        }
-        const res = await axios.post(`https://myntra-app-backend-production.up.railway.app/cart/add/${id}`,{withCredentials:true})
-        console.log(res)
-        if(res.data.message == "Product Added Successfully"){
-          alert("Product Added Successfully")
-        }
-      } catch (error) {
-        console.log(error)
+  const handleAddBag = async (id) => {
+
+    try {
+      
+      const res = await axios.post(`https://myntra-app-backend-production.up.railway.app/cart/add/${id}`, { withCredentials: true })
+      console.log(res)
+      if (res.data.message == "Product Added Successfully") {
+        alert("Product Added Successfully")
       }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -111,7 +110,7 @@ const SingleProduct = () => {
           <div className="singleProButtons">
             <button className="addToCart" onClick={() => handleAddBag(id)} >
               <HiOutlineShoppingBag className="singleProIcons" />
-              {product.alreadyAdded ? "GO TO BAG" : "ADD TO BAG"}
+              ADD TO BAG
             </button>
             <button className="addToList" disabled={true}>
               <BiHeart className="singleProIcons" />
