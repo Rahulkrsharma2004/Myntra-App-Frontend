@@ -35,7 +35,7 @@ const Product = () => {
 
   const getProducts = async () => {
     try {
-      let endpoint = "https://myntra-app-backend-production.up.railway.app/product/";
+      let endpoint = "https://myntra-app-backend-production.up.railway.app/products/";
       if (category && category !== "") {
         endpoint += `?category=${category}`;
       }
@@ -120,7 +120,7 @@ const Product = () => {
               <Text fontSize={"14px"} fontWeight={700} color="#282c3f" textAlign={"left"}>CATEGORIES</Text>
               <CheckboxGroup  size={"sm"} onChange={handleCategory} defaultValue={searchParams.getAll("category")}>
                 <VStack alignItems={"flex-start"} mt={"3"} spacing={4}>
-                  <Checkbox value="TShirts"  >TShirts</Checkbox>
+                  <Checkbox value="TShirts" >TShirts</Checkbox>
                   <Checkbox value="Jeans">Jeans</Checkbox>
                   <Checkbox value="Kurta Sets">Kurta Sets</Checkbox>
                   <Checkbox value="Trousers">Trousers</Checkbox>

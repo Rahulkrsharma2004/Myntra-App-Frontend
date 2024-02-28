@@ -88,6 +88,14 @@
     margin-right: 10px;
     cursor: pointer;
   }
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #ff18be !important; 
+    border-color: #f9f9f9 !important; 
+  }
+  .ant-checkbox:hover .ant-checkbox-inner {
+    background-color: #ff18be !important; 
+    border-color: #f9f9f9 !important; 
+  }
   
   @media (max-width: 720px) {
     .proSkeleton {

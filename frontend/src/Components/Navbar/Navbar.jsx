@@ -6,7 +6,6 @@ import { BiSearch, BiUser, BiHeart } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
-import { RiAdminLine } from "react-icons/ri";
 import { Dropdown } from "antd";
 import { Context } from "../../Contexts/AuthContext";
 
@@ -17,11 +16,10 @@ const Navbar = () => {
   const { isAuth, setIsAuth } = useContext(Context);
 
   const handleLogout = async () => {
-    console.log("first")
     try {
-      console.log("second")
-      const response = await axios.post("http://localhost:8080/user/logout", { withCredentials: true })
+      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout", { withCredentials: true })
       console.log(response)
+      Cookies.set("token", response.data.token)
       if (response.data == 'Logout Successfully') {
         setIsAuth(!isAuth)
         alert('Logout Successfully')
@@ -30,9 +28,9 @@ const Navbar = () => {
 
     } catch (error) {
       console.log(error)
-      // if (error.response.data.message == 'Internal Server Error') {
-      //   alert("Internal Server Error")
-      // }
+      if (error.response.data.message == 'Internal Server Error') {
+        alert("Internal Server Error")
+      }
     }
 
 

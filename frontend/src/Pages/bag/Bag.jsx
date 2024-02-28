@@ -15,7 +15,7 @@ const Bag = () => {
 
   const showCartData = async () => {
     try {
-      const res = await axios.get(`https://myntra-app-backend-production.up.railway.app/cart/`, { withCredentials: true })
+      const res = await axios.get(`https://myntra-app-backend-production.up.railway.app/carts/`, { withCredentials: true })
       console.log(res)
       setBagData(res.data.myCart)
     } catch (error) {
