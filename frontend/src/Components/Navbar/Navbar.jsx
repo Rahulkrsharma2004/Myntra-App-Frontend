@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import Cookies from "js-cookie";
 import { BiSearch, BiUser, BiHeart } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -17,9 +18,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout", { withCredentials: true })
+      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout", {} , { withCredentials: true })
       console.log(response)
-      Cookies.set("token", response.data.token)
+      Cookies.remove("ACCESS_TOKEN")
       if (response.data == 'Logout Successfully') {
         setIsAuth(!isAuth)
         alert('Logout Successfully')
@@ -32,7 +33,6 @@ const Navbar = () => {
         alert("Internal Server Error")
       }
     }
-
 
   }
 

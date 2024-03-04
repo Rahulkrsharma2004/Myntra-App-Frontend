@@ -23,7 +23,7 @@ const SingleProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        let response = await axios.get(`https://myntra-app-backend-production.up.railway.app/product?_id=${id}`);
+        let response = await axios.get(`https://myntra-app-backend-production.up.railway.app/products?_id=${id}`);
         response = response.data.products.filter(ele => {
           if (id == ele._id) {
 

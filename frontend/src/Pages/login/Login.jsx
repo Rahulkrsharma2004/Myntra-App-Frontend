@@ -21,7 +21,7 @@ const Login = () => {
     const handleLoginUser = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/login", userDetails, { withCredentials: true });
+            const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/login", userDetails , { withCredentials: true });
             console.log(response.data.ACCESS_TOKEN);
             console.log(response);
             Cookies.set("ACCESS_TOKEN", response.data.ACCESS_TOKEN);
@@ -51,7 +51,7 @@ const Login = () => {
                     <div>
                         <h3>Login</h3>
                     </div>
-                    <div>
+                    <div className="formInput">
                         <form onSubmit={handleLoginUser}>
                             <input
                             className="loginInput"
