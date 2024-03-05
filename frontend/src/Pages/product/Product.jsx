@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Product.css";
+import ProductStr from "../../Components/Product/ProductStr"
 import { Select, Skeleton, Checkbox } from "antd";
 import { useLocation } from "react-router-dom";
-import ProComp from "../../Components/Product/Product";
 import axios from "axios";
 import { Box, VStack, Stack, RadioGroup, Divider, Text, CheckboxGroup, HStack } from '@chakra-ui/react'
 import { useSearchParams } from "react-router-dom"
@@ -158,7 +158,7 @@ const Product = () => {
         ) : (
           <div className="proGrid">
             {products.map((pro, ind) => (
-              <ProComp product={pro} key={ind} />
+              <ProductStr product={pro} key={ind} />
             ))}
           </div>
         )}

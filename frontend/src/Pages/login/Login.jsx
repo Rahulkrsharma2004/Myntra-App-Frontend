@@ -1,14 +1,14 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import Cookies from 'js-cookie';
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Contexts/AuthContext";
 import "./Login.css";
 
 const Login = () => {
     const [userDetails, setUserDetails] = useState({ email: "", pass: "" });
     const { setIsAuth, setUser } = useContext(Context);
-    const nevigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleUserDetails = (e) => {
         const { name, value } = e.target;
@@ -21,15 +21,17 @@ const Login = () => {
     const handleLoginUser = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/login", userDetails , { withCredentials: true });
+            const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/login", userDetails, { withCredentials: true });
             console.log(response.data.ACCESS_TOKEN);
             console.log(response);
             Cookies.set("ACCESS_TOKEN", response.data.ACCESS_TOKEN);
             if (response.data.msg === 'Login Successful') {
+                setIsAuth(true)
+                setUser(response.data.user.username)
+                localStorage.setItem("setIsAuth",true)
+                localStorage.setItem("setUser",response.data.user.username);
                 alert("Login Successfully");
-                nevigate("/");
-                setIsAuth(true);
-                setUser(response.data.user);
+                navigate("/");
             } else if (response.data.msg === 'Register first or Wrong crendential') {
                 alert("Register first or Wrong crendential");
             }
@@ -54,7 +56,7 @@ const Login = () => {
                     <div className="formInput">
                         <form onSubmit={handleLoginUser}>
                             <input
-                            className="loginInput"
+                                className="loginInput"
                                 name="email"
                                 value={userDetails.email}
                                 onChange={handleUserDetails}
@@ -63,7 +65,7 @@ const Login = () => {
                                 placeholder="Enter email"
                             />
                             <input
-                            className="loginInput"
+                                className="loginInput"
                                 name="pass"
                                 value={userDetails.pass}
                                 onChange={handleUserDetails}

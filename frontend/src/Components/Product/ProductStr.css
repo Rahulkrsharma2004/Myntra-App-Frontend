@@ -1,16 +1,18 @@
 .itemBox {
     width: 100%;
-    cursor: pointer;
     background-color: white;
+    border: 2px solid rgb(222, 217, 217);
   }
   .itemBox:hover {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   .itemImage {
     position: relative;
+    
   }
   .itemImage img {
     width: 100%;
+    cursor: pointer;
   }
   .itemBox a {
     text-decoration: none;
@@ -65,6 +67,25 @@
     font-size: 12px;
     color: #ff925a;
     font-weight: 400;
+  }
+  .btnDiv{
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  } 
+  .AddToWishlistBtn{
+     padding: 9px 2rem;
+     border-radius: 3px;
+     cursor: pointer;
+     border: 3px rgb(243, 99, 178) solid;
+     color: rgb(255, 85, 184);
+     background-color: transparent;
+     /* font-weight: lighter; */
+  }
+  .AddToWishlistBtn:hover{
+    background-color: rgb(254, 90, 169);
+    color: rgb(255, 255, 255);
+    transition: 0.1s all ease-in;
   }
   @media (max-width: 720px) {
     .itemDetails {

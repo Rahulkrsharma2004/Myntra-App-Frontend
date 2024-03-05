@@ -17,14 +17,3 @@
   .notLogin img {
     margin: 0.5rem 0;
   }
-  .notLogin button {
-    padding: 15px 45px;
-    font-size: 18px;
-    letter-spacing: 1px;
-    background-color: white;
-    font-weight: 600;
-    color: #3466e8;
-    border: 1px solid #3466e8;
-    border-radius: 4px;
-    cursor: pointer;
-  }

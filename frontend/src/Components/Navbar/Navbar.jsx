@@ -15,14 +15,19 @@ const Navbar = () => {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
   const { isAuth, setIsAuth } = useContext(Context);
+  const { user, setUser } = useContext(Context);
+
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout", {} , { withCredentials: true })
+      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout", {}, { withCredentials: true })
       console.log(response)
       Cookies.remove("ACCESS_TOKEN")
       if (response.data == 'Logout Successfully') {
-        setIsAuth(!isAuth)
+        setIsAuth(false)
+        setUser("")
+        localStorage.removeItem("setIsAuth",false)
+        localStorage.removeItem("setUser","")
         alert('Logout Successfully')
         navigate("/")
       }
@@ -58,7 +63,7 @@ const Navbar = () => {
     {
       label: isAuth ? (
         <div>
-          <h4 style={{ color: "green" }}>Welcome User</h4>
+          <h4 style={{ color: "green" }}>WELCOME {user}</h4>
           <p>Access orders and many more !</p>
         </div>
       ) : (
@@ -101,10 +106,10 @@ const Navbar = () => {
     {
       label: isAuth ? (
         <p onClick={handleLogout} p="10px" style={{ color: "red" }}>
-          Logout
+          LOGOUT
         </p>
       ) : (
-        <Link padding="10px" to="/login" style={{ color: "green" }}>Login / Signup</Link>
+        <Link padding="10px" to="/login" style={{ color: "green" }}>LOGIN / SIGNUP</Link>
       ),
       key: "0",
     },
@@ -264,7 +269,7 @@ const Navbar = () => {
               trigger={["hover"]}
             >
               <Link onClick={(e) => e.preventDefault()} style={{ color: isAuth ? "green" : "" }}>
-                <BiUser className="sideIcons" style={{ color: isAuth ? "green" : "" }} />
+                <BiUser className={isAuth ? "sideIconspro" : "sideIcons"} />
                 <p className="display">Profile</p>
               </Link>
             </Dropdown>

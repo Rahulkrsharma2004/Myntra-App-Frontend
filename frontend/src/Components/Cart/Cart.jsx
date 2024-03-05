@@ -8,7 +8,7 @@ const cart = () => {
       <h3>Het, It feels so light !</h3>
       <p>There is nothing in your bag. Lets add something.</p>
       <Link to="/">
-        <button>ADD ITEMS FROM HOME OR LOGIN</button>
+        <button>ADD ITEMS FROM HOME OR LOGIN FIRST</button>
       </Link>
     </div>
   );

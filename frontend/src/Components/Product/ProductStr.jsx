@@ -1,8 +1,8 @@
 import React from "react";
-import "./Product.css";
+import "./ProductStr.css";
 import { Link } from "react-router-dom";
 
-const Product = ({ product }) => {
+const ProductStr = ({ product }) => {
   const {
     image,
     brand,
@@ -17,17 +17,22 @@ const Product = ({ product }) => {
         <div className="itemImage">
           <img src={image} alt="ProductImage" />
         </div>
+        </Link>
         <div className="itemDetails">
           <h4>{brand}</h4>
           <p>{title}</p>
           <div>
-            Rs. {price} 
+            Rs. {price}
           </div>
+          <div className="btnDiv">
+            <button className="AddToWishlistBtn">ADD TO WISHLIST</button>
+          </div>
+          
         </div>
-      </Link>
+     
     </div>
    
   );
 };
 
-export default Product;
+export default ProductStr;

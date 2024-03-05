@@ -12,7 +12,7 @@ const Bag = () => {
   if (!isAuth) {
     return <Cart />
   }
-
+  console.log(bagData)
   const showCartData = async () => {
     try {
       const res = await axios.get(`https://myntra-app-backend-production.up.railway.app/carts/`, { withCredentials: true })
@@ -33,7 +33,7 @@ const Bag = () => {
 
   const handledelete = async (productId) => {
     try {
-      const res = await axios.delete(`https://myntra-app-backend-production.up.railway.app/cart/delete/${productId}`, { withCredentials: true });
+      const res = await axios.delete(`https://myntra-app-backend-production.up.railway.app/carts/delete/${productId}`, { withCredentials: true });
       console.log(res);
       setBagData(prevBagData => prevBagData.filter(item => item.productId !== productId));
     } catch (error) {
@@ -50,13 +50,13 @@ const Bag = () => {
         <div className="maincart">
           <div className="itemBag">
             <div className="bagImage">
-              <img src={ele.image} alt="ProductImage" className="imagebag" />
+              {/* <img src={ele.image[0]} alt="ProductImage" className="imagebag" /> */}
             </div>
             <div className="itemDetails">
-              <h4>{ele.brand}</h4>
-              <p>{ele.title}</p>
+              {/* <h4>{ele.brand}</h4> */}
+              {/* <p>{ele.title}</p> */}
               <div>
-                Rs. {ele.price}
+                {/* Rs. {ele.price} */}
               </div>
               <div className="sizeOptions">
                 {ele.sizes.map((size, index) => (
