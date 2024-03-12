@@ -24,7 +24,7 @@ const Login = () => {
             const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/login", userDetails, { withCredentials: true });
             console.log(response.data.ACCESS_TOKEN);
             console.log(response);
-            Cookies.set("ACCESS_TOKEN", response.data.ACCESS_TOKEN);
+            // Cookies.set("ACCESS_TOKEN", response.data.ACCESS_TOKEN);
             if (response.data.msg === 'Login Successful') {
                 setIsAuth(true)
                 setUser(response.data.user.username)
