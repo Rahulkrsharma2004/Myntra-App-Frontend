@@ -1,81 +1,115 @@
 import React, { useContext, useState, useEffect } from "react";
+import axios from "axios";
+import "./Bag.css";
 import Cart from "../../Components/Cart/Cart";
-import Login from "../../Components/Login/Login";
 import { Context } from "../../Contexts/AuthContext";
-import axios from "axios"
-import './Bag.css'
+import { MdClose } from "react-icons/md";
 
 const Bag = () => {
-  const { isAuth, setIsAuth } = useContext(Context)
-  const [bagData, setBagData] = useState([])
+  const { isAuth, setIsAuth } = useContext(Context);
+  const [bagData, setBagData] = useState([]);
+  // const [total, setTotal] = useState(0)
+
+  // console.log("total",total)
+  // console.log("setTotal",setTotal)
 
   if (!isAuth) {
-    return <Cart />
+    return <Cart />;
   }
-  console.log(bagData)
+
   const showCartData = async () => {
     try {
-      const res = await axios.get(`https://myntra-app-backend-production.up.railway.app/carts/`, { withCredentials: true })
-      console.log(res)
-      setBagData(res.data.myCart)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    showCartData()
-  }, [])
-
-  const handleorder = () => {
-    alert("Order Successfully placed")
-  }
-
-  const handledelete = async (productId) => {
-    try {
-      const res = await axios.delete(`https://myntra-app-backend-production.up.railway.app/carts/delete/${productId}`, { withCredentials: true });
+      const res = await axios.get(
+        `https://myntra-app-backend-production.up.railway.app/carts/`,
+        bagData,
+        { withCredentials: true }
+      );
       console.log(res);
-      setBagData(prevBagData => prevBagData.filter(item => item.productId !== productId));
+      setBagData(res.data.myCart);
     } catch (error) {
-      console.log(error);
+      console.log("error", error);
     }
   };
-  
 
+  useEffect(() => {
+    showCartData();
+  }, []);
 
-  return <div className="mainDivCart">
-    {
-      // console.log(bagData)
-      bagData.map((ele) => (
+  // useEffect(()=>{
+
+  // let totalCount = 0;
+  // bagData.forEach(ele => {
+  //   totalCount += ele.Array.length;
+  // });
+  // setTotal(totalCount);
+
+  // },[bagData])
+
+  let totalItems = 0;
+  bagData.forEach((item) => {
+    totalItems += item.Array;
+  });
+
+  const handleDelete = async (_id) => {
+    try {
+      const res = await axios.delete(
+        `https://myntra-app-backend-production.up.railway.app/carts/delete/${_id}`,
+        {},
+        { withCredentials: true }
+      );
+      console.log(res);
+      setBagData((prevBagData) =>
+        prevBagData.filter((item) => item._id !== _id)
+      );
+      // if (res.data.message == "Item is removed from cart!") {
+      //   alert("Item Deleted from Cart");
+      // }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
+  return (
+    <div className="mainDivCart">
+      {bagData.map((ele) => (
         <div className="maincart">
+          <h5>Item Count:{ele.totalItems}</h5>
           <div className="itemBag">
+            <br />
             <div className="bagImage">
-              {/* <img src={ele.image[0]} alt="ProductImage" className="imagebag" /> */}
+              <img src={ele.image} alt="ProductImage" className="imagebag" />
+              <MdClose className="crossCut" onClick={() => handleDelete(ele._id)}/>
             </div>
             <div className="itemDetails">
-              {/* <h4>{ele.brand}</h4> */}
-              {/* <p>{ele.title}</p> */}
-              <div>
-                {/* Rs. {ele.price} */}
-              </div>
+              <h4>{ele.brand}</h4>
+              <p>{ele.title}</p>
+              <div>Rs. {ele.price}</div>
               <div className="sizeOptions">
                 {ele.sizes.map((size, index) => (
-                  <span key={index} style={{ marginRight: '20px', color: "red", cursor: "pointer" }}>{size}</span>
+                  <span
+                    key={index}
+                    style={{
+                      marginRight: "20px",
+                      color: "red",
+                      cursor: "pointer",
+                    }}>
+                    {size}
+                  </span>
                 ))}
               </div>
               <div>
-                <button className="deleteCart" onClick={() => handledelete(ele.productId)}>DELETE</button>
-
-                <button className="orderCart" onClick={handleorder}>ORDER</button>
+                {/* <button
+                  className="deleteCart"
+                  onClick={() => handleDelete(ele._id)}>
+                  DELETE ITEM
+                </button> */}
               </div>
             </div>
-
           </div>
         </div>
-
-      ))
-    }
-  </div>;
+      ))}
+    </div>
+  );
 };
 
 export default Bag;

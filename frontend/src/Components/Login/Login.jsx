@@ -8,7 +8,7 @@ const login = () => {
       <h3>PLEASE LOG IN FIRST !!</h3>
       <img src="https://myntraa-clone.netlify.app/assets/login.png" alt="img" />
       <Link to="/login" >
-        <button>LOGIN</button>
+        <button className="btnLog">LOGIN</button>
       </Link>
     </div>
   );

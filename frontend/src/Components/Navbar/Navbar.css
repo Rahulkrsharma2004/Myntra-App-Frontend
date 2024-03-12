@@ -6,6 +6,7 @@
     padding: 0 4rem;
     display: block;
     position: fixed;
+    /* position: relative; */
     z-index: 99;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(100, 100, 111, 0.09) 0px 7px 20px 0px;
@@ -88,7 +89,7 @@
     width: 70%;
   }
   .navSearch > input {
-    outline: none;
+    /* outline: none; */
     border: none;
     background-color: rgb(238, 238, 238);
     padding: 10px 20px;

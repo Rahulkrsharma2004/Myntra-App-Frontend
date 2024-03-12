@@ -20,7 +20,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout", {}, { withCredentials: true })
+      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout",  { withCredentials: true })
       console.log(response)
       Cookies.remove("ACCESS_TOKEN")
       if (response.data == 'Logout Successfully') {
@@ -33,7 +33,7 @@ const Navbar = () => {
       }
 
     } catch (error) {
-      console.log(error)
+      console.log("error",error)
       if (error.response.data.message == 'Internal Server Error') {
         alert("Internal Server Error")
       }
@@ -235,10 +235,10 @@ const Navbar = () => {
               </li>
               <br />
 
-              <h3 style={{ color: isAuth ? "green" : "" }} className="mobItem">{isAuth ? "Welcome User" : ""} </h3>
+              <h3 style={{ color: isAuth ? "green" : "" }} className="mobItem">{isAuth ? "WELCOME USER" : ""} </h3>
 
               <h4 className="mobItem" onClick={handleClick} >
-                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{isAuth ? "Logout" : "Login / Signup"}</Link>
+                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{isAuth ? "LOGOUT" : "LOGIN / SIGNUP"}</Link>
               </h4>
             </ul>
           </nav>
@@ -283,7 +283,7 @@ const Navbar = () => {
           <div className="navIcons">
             <Link to="/bag">
               <HiOutlineShoppingBag className="sideIcons" />
-              {/* <span></span> */}
+              <span>2</span>
               <p className="display">Bag</p>
             </Link>
           </div>

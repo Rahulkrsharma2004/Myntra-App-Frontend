@@ -1,26 +1,27 @@
 .itemBag{
     height: 50%;
     width: 50%;
-    /* background-color: aquamarine; */
-    /* display: flex; */
-    /* margin-top: 200px; */
     padding: 20px;
-    z-index: 20px;
+    /* z-index: 20px; */
 }
 .bagImage{
     height: auto;
     width: auto;
-    /* background-color: blue; */
     display: flex;
-    /* margin-top: 200px; */
 }
 .imagebag{
-    /* height: 50%; */
     width: 30%;
 }
 .maincart{
-    display: flex;
-    justify-content: center;
+    padding-top: 6rem;
+    /* position: relative; */
+}
+.crossCut{
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  background-color: aliceblue;
 }
 
 .deleteCart {
@@ -47,6 +48,6 @@
     cursor: pointer;
   }
   .orderCart:hover {
-    background-color: #ff97b5;
+    background-color: #89fb9a;
     color: rgb(51, 42, 42);
   }

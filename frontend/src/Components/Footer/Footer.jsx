@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./Footer.css";
 import { MdCall, MdEmail, MdHome, MdModeComment } from "react-icons/md";
 import { FaLinkedin, FaGithub, FaYoutube, FaHeart } from "react-icons/fa";
+import './Footer.css'
+
 const footer = () => {
   return (
     <div className="footer">
