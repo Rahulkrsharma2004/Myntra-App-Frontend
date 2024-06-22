@@ -19,7 +19,7 @@ const SingleProduct = () => {
     const fetchProduct = async () => {
       try {
         let response = await axios.get(
-          `https://myntra-app-backend-production.up.railway.app/products?_id=${id}`
+          `https://myntra-app-backend.vercel.app/products?_id=${id}`
         );
         response = response.data.products.filter((ele) => {
           if (id == ele._id) {

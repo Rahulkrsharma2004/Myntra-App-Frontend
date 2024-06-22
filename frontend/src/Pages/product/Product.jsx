@@ -35,7 +35,7 @@ const Product = () => {
 
   const getProducts = async () => {
     try {
-      let endpoint = "https://myntra-app-backend-production.up.railway.app/products/";
+      let endpoint = "https://myntra-app-backend.vercel.app/products/";
       if (category && category !== "") {
         endpoint += `?category=${category}`;
       }

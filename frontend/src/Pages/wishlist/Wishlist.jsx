@@ -3,7 +3,7 @@ import Login from "../../Components/Login/Login";
 import { Context } from "../../Contexts/AuthContext";
 import { Link } from "react-router-dom";
 import "./Wishlist.css";
-import axios from "axios"
+import axios from "axios";
 
 const Wishlist = () => {
   const { isAuth, setIsAuth } = useContext(Context);
@@ -21,47 +21,40 @@ const Wishlist = () => {
         { withCredentials: true }
       );
       console.log(res.data.myWishlist);
-      setWishData(res.data.myWishlist)
+      setWishData(res.data.myWishlist);
     } catch (error) {
       console.log("error", error);
     }
   };
 
-  useEffect(()=>{
-    showWishData()
-  },[])
+  useEffect(() => {
+    showWishData();
+  }, []);
 
-  const handleAddBag = async (id) => {
+  const handleMoveToBag = async (id) => {
     try {
-      const res = await axios.post(
-        `https://myntra-app-backend-production.up.railway.app/carts/add/${id}`,
+      const addToBagRes = await axios.post(
+        `https://myntra-app-backend.vercel.app/carts/add/${id}`,
         { withCredentials: true }
       );
-      console.log(res)
-      if (res.data.message == "Product Added Successfully") {
-        alert("Product Move To Bag");
-      }
 
-      const res1 = await axios.delete(`https://myntra-app-backend-production.up.railway.app/wishlists/delete/${id}`)
-      setWishData(prevWishData => prevWishData.filter(item => item.id !== id));
-      console.log(res1);
+      const deleteFromWishlistRes = await axios.delete(
+        `https://myntra-app-backend.vercel.app/wishlists/delete/${id}`
+      );
+
+      if (
+        addToBagRes.data.message === "Product Added Successfully" &&
+        deleteFromWishlistRes.data.message === "Item was removed from Wishlist!"
+      ) {
+        alert("Product moved to Bag");
+        setWishData((prevWishData) =>
+          prevWishData.filter((item) => item._id !== id)
+        );
+      }
     } catch (error) {
       console.log(error);
     }
   };
-
-  const handleDeleteWish = async(_id) => {
-    try {
-      const res = await axios.delete(`https://myntra-app-backend-production.up.railway.app/wishlists/delete/${_id}`)
-      console.log(res)
-      setWishData(prevWishData => prevWishData.filter(item => item._id !== _id));
-      if(res.data.message == "Item was removed from Wishlist!"){
-        alert("Item was removed from Wishlist")
-      }
-    } catch (error) {
-      console.log("Error",error)
-    }
-  }
 
   return (
     <div>
@@ -111,7 +104,7 @@ const Wishlist = () => {
                   <div>
                     <button
                       className="deleteCart"
-                      onClick={() => handleAddBag(ele._id)}>
+                      onClick={() => handleMoveToBag(ele._id)}>
                       MOVE TO BAG
                     </button>
                     <button

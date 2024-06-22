@@ -20,9 +20,9 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/logout",  { withCredentials: true })
+      const response = await axios.post("https://myntra-app-backend.vercel.app/users/logout", {} , { withCredentials: true })
       console.log(response)
-      Cookies.remove("ACCESS_TOKEN")
+      // Cookies.remove("ACCESS_TOKEN")
       if (response.data == 'Logout Successfully') {
         setIsAuth(false)
         setUser("")
@@ -33,8 +33,7 @@ const Navbar = () => {
       }
 
     } catch (error) {
-      console.log("error",error)
-      if (error.response.data.message == 'Internal Server Error') {
+      if (error.response == 'Internal Server Error') {
         alert("Internal Server Error")
       }
     }

@@ -20,7 +20,7 @@ const Bag = () => {
   const showCartData = async () => {
     try {
       const res = await axios.get(
-        `https://myntra-app-backend-production.up.railway.app/carts/`,
+        `https://myntra-app-backend.vercel.app/carts/`,
         bagData,
         { withCredentials: true }
       );
@@ -53,7 +53,7 @@ const Bag = () => {
   const handleDelete = async (_id) => {
     try {
       const res = await axios.delete(
-        `https://myntra-app-backend-production.up.railway.app/carts/delete/${_id}`,
+        `https://myntra-app-backend.vercel.app/carts/delete/${_id}`,
         {},
         { withCredentials: true }
       );

@@ -23,7 +23,7 @@ const Signup = () => {
   const handleRegisterUser = async (e) => {
     e.preventDefault()
     try {
-      let response = await axios.post("https://myntra-app-backend-production.up.railway.app/users/register", userDetails, { withCredentials: true })
+      let response = await axios.post("https://myntra-app-backend.vercel.app/users/register", userDetails, { withCredentials: true })
       console.log(response)
 
       if (response.data.msg == 'New user has been created') {
