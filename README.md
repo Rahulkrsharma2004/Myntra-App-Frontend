@@ -1,7 +1,15 @@
 # Myntra-App-Frontend
+## frontend
 
 ## Folder Structure
-
+   ###Node_modules
+   ###Public
+   ###src
+   ###.gitignore
+   ###index.html
+   ###package-lock.json
+   ###paackage.json
+   ###vite.config.js
 
 ![image](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/3c84c66b-5ec5-4a44-913e-e09270dcd727)
 
@@ -45,8 +53,8 @@ Follow these steps to set up the project locally:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/YourUsername/Myntra-App-Frontend.git
-   cd Myntra-App-Frontend
+   git clone https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/frontend.git
+   cd Myntra-App-Frontend/frontend
    npm run dev
 
 
