@@ -1,4 +1,6 @@
 # Myntra-App-Frontend
+
+## Folder Structure
     ├── assets
     ├── Components
     │   ├── Cart
