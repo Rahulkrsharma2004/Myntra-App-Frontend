@@ -2,11 +2,13 @@
 
 ## Folder Structure
 
-![Myntra Logo](https://github.com/Rahulkrsharma2004/Myntra-App-Backend/assets/139108196/2ce06a97-1b27-428b-84fa-b34b766ff541)
+
+![image](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/3c84c66b-5ec5-4a44-913e-e09270dcd727)
+
 
 ## Description
 
-This is the frontend application for the Myntra clone. It is built using React.js, and Tailwind CSS for a responsive and dynamic user interface. The application replicates various features of the Myntra e-commerce platform, including product browsing, searching, cart management, user authentication, and more.
+Myntra is an online e-commerce website for personal care and beauty products. Signup and login functionality , User and admin dashboard , Product and cart page are some of the features. Built the backend via NodeJS and MongoDB. Created the admin dashboard with all functionality Designed product and single product page.
 
 ## Features
 
@@ -26,7 +28,7 @@ This is the frontend application for the Myntra clone. It is built using React.j
 - **Tailwind CSS:** For styling and layout.
 - **Axios:** For making HTTP requests to the backend.
 - **React Router:** For routing and navigation.
-- **Vercel:** For deployment.
+- **Netlify:** For deployment.
 
 ## Screenshots
 
@@ -45,5 +47,6 @@ Follow these steps to set up the project locally:
    ```sh
    git clone https://github.com/YourUsername/Myntra-App-Frontend.git
    cd Myntra-App-Frontend
+   npm run dev
 
 
