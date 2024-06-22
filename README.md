@@ -93,13 +93,12 @@ Myntra is an online e-commerce website for personal care and beauty products. Si
 
 <img width="949" alt="Capture" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/9cde2563-96f7-462e-aa4b-2e6ac954d6b5">
 <img width="944" alt="Capture2" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/f0f61c7a-55ca-478d-9ea3-c4bfbdae6b91">
-![Screenshot (232)](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/c31f7c2a-1e5f-45f2-9245-c80bfc012abf)
-<img width="944" alt="Capture2" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/efe6800b-b1a4-42ca-96a9-9953ce8377ae">
+<img width="950" alt="Capt1ure" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/c7271ecf-7eae-4a47-9dd8-0de6c672cc3a">
+<img width="768" alt="Ca121pture" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/945ad66b-a24c-4a46-96e5-b3d818b69390">
 <img width="946" alt="Capture3" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/cf4bb16b-e7b8-477b-aa05-683ea710f3e3">
-![Screenshot (229)](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/a9507054-7ee0-45ca-9288-8e52ec09f9e4)
-![Screenshot (231)](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/3eecd120-ae0f-40e5-be66-82eb48ccbf01)
+<img width="776" alt="Captu2re" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/cf962b18-4029-4e8c-9eee-55b9e1d1a2bd">
 <img width="944" alt="Capture5" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/5d991d8a-48e8-4f24-a620-7bccc5fda5f2">
-![Screenshot (230)](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/e6a51487-fa7a-492e-9ff4-aa237ce93005)
+<img width="944" alt="Capture4" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/895b3dcd-24db-45bb-8898-92e2acaefbf9">
 <img width="944" alt="Capture4" src="https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/e14d0227-1be1-4402-9225-24fdbacfe181">
 
 ## Installation
