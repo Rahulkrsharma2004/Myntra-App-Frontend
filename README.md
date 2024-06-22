@@ -1,14 +1,57 @@
 # Myntra-App-Frontend
-## Folder Structure
-   ### Node_modules
-   ### Public
-   ### src
-      - **Home:**
-   ### gitignore
-   ### index.html
-   ### package-lock.json
-   ### paackage.json
-   ### vite.config.js
+    ├── assets
+    ├── Components
+    │   ├── Cart
+    │   │   ├── Cart.jsx
+    │   │   └── Cart.css
+    │   ├── Footer
+    │   │   ├── Footer.jsx
+    │   │   └── Footer.css
+    │   ├── Product
+    │   │   ├── Product.jsx
+    │   │   └── Product.css
+    │   ├── Navbar
+    │   │   ├── Navbar.jsx
+    │   │   └── Navbar.css
+    │   ├── Login
+    │       ├── Login.jsx
+    │       └── Login.css
+    ├── Context
+    │   └── AuthContext.jsx
+    ├── Pages
+    │   ├── bag
+    │   │   ├── Bag.jsx
+    │   │   └── Bag.css
+    │   ├── home
+    │   │   ├── Home.jsx
+    │   │   └── Home.css
+    │   ├── login
+    │   │   ├── Login.jsx
+    │   │   └── Login.css
+    │   ├── orders
+    │   │   ├── Order.jsx
+    │   │   └── Order.css
+    │   ├── product
+    │   │   ├── product.jsx
+    │   │   └── Product.css
+    │   ├── profile
+    │   │   ├── profile.jsx
+    │   │   └── Profile.css
+    │   ├── wishlist
+    │       ├── Wishlist.jsx
+    │       └── Wishlist.css
+    ├── Routes
+    │   └── AllRoute.jsx
+    ├── App.jsx
+    ├── App.css
+    ├── main.jsx
+    └── index.css
+### .gitignore
+### index.html
+### package-lock.json
+### package.json
+### vite.config.js
+
    
 --------------------------------------------------------------
 ![image](https://github.com/Rahulkrsharma2004/Myntra-App-Frontend/assets/139108196/3c84c66b-5ec5-4a44-913e-e09270dcd727)
