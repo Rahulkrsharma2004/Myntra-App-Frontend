@@ -3,7 +3,7 @@
    ### Node_modules
    ### Public
    ### src
-      ** Home 🏡 **
+      - **Home:**
    ### gitignore
    ### index.html
    ### package-lock.json
