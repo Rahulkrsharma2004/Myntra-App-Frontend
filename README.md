@@ -82,6 +82,12 @@ Myntra is an online e-commerce website for personal care and beauty products. Si
 - **Axios:** For making HTTP requests to the backend.
 - **React Router:** For routing and navigation.
 - **Netlify:** For deployment.
+- **github:** For deployment.
+- **Html:** For deployment.
+- **css:** For deployment.
+- **antd:** For deployment.
+- **js:** For deployment.
+- **Chakra UI:** For deployment.
 
 ## Screenshots
 
