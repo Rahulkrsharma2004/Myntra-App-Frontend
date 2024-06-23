@@ -54,7 +54,7 @@ const Signup = () => {
     <div className="signup">
       <div className="signupContainer">
         <div className="signupImage">
-          <img src="https://myntraa-clone.netlify.app/assets/signup.png" alt="" />
+          <img src="https://th.bing.com/th/id/OIP.tS00rINUSwd2e-c2_hZv-AAAAA?rs=1&pid=ImgDetMain" alt="" />
         </div>
         <div className="signupDetail">
           <div>

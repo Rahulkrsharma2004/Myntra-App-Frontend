@@ -65,7 +65,7 @@ const Login = () => {
       <div className="loginContainer">
         <div className="loginImage">
           <img
-            src="https://myntraa-clone.netlify.app/assets/signup.jpg"
+            src="https://th.bing.com/th/id/R.87e87fa8cb1c4d332a64470d5c3acd89?rik=vuWahGaWKYN5CQ&riu=http%3a%2f%2fdli-eduventure.um.ac.id%2fassets%2fimg%2flogin.png&ehk=hPJNQY6rdxBzsCPJa9ahwTJgf6KEPNQdNr1lfqo1NTk%3d&risl=&pid=ImgRaw&r=0"
             alt=""
           />
         </div>

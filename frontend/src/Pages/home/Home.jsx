@@ -5,7 +5,7 @@ import { Carousel } from "react-responsive-carousel";
 import "./Home.css";
 import { Context } from "../../Contexts/AuthContext";
 import { Link,useNavigate } from "react-router-dom";
-import MetaData from "../../Components/MetaData";
+// import MetaData from "../../Components/MetaData";
 import sliderimg1 from "../../assets/slide1.webp"
 import sliderimg2 from "../../assets/slide2.webp"
 import sliderimg3 from "../../assets/slide3.webp"
@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <div>
       
-      <MetaData title={"Home Page"} />
+      {/* <MetaData title={"Home Page"} /> */}
       
       <div className="HomeCarousel">
         <Carousel infiniteLoop autoPlay>
