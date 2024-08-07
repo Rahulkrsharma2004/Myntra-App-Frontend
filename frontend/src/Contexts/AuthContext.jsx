@@ -1,4 +1,4 @@
-import React,{useState,createContext,useEffect} from 'react'
+import {useState,createContext,useEffect} from 'react'
 export const Context = createContext()
 
 const AuthContext = ({children}) => {
@@ -8,6 +8,7 @@ const AuthContext = ({children}) => {
       setIsAuth(localStorage.getItem("setIsAuth"))
       setUser(localStorage.getItem("setUser"))
       },[])
+      console.log("first")
   return (
   <Context.Provider value={{isAuth,setIsAuth,user,setUser}}>
     {children}

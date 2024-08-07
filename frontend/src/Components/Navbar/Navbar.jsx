@@ -35,6 +35,7 @@ const Navbar = () => {
     } catch (error) {
       if (error.response == 'Internal Server Error') {
         alert("Internal Server Error")
+        console.log("first")
       }
     }
 
