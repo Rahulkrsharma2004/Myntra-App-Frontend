@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Slider } from "antd";
 import "./SingleProduct.css";
@@ -6,8 +6,10 @@ import { RiStarSFill } from "react-icons/ri";
 import { BiHeart, BiDetail } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import axios from "axios";
+import { Context } from "../../Contexts/AuthContext";
 
 const SingleProduct = () => {
+  const { isAuth, setIsAuth } = useContext(Context);
   const { id } = useParams();
   console.log(id);
   const [product, setProduct] = useState([]);
@@ -46,31 +48,42 @@ const SingleProduct = () => {
   }
 
   const handleAddBag = async (id) => {
-    try {
-      const res = await axios.post(
-        `https://myntra-app-backend-production.up.railway.app/carts/add/${id}`,
-        { withCredentials: true }
-      );
-      console.log(res);
-      if (res.data.message == "Product Added Successfully") {
-        alert("Product Added Successfully In Bag");
+    if (!isAuth) {
+      alert("Please login to add product to bag !!");
+    } else {
+      try {
+        const res = await axios.post(
+          `https://myntra-app-backend.vercel.app/carts/add/${id}`,
+          { withCredentials: true }
+        );
+        console.log(res);
+        if (res.data.message == "Product Added Successfully") {
+          alert("Product Added Successfully In Bag");
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
-  const handleAddWish = async(id) => {
-    try {
-     const res = await axios.post(`https://myntra-app-backend-production.up.railway.app/wishlists/add/${id}`,{ withCredentials: true }) 
-     console.log(res)
-     if(res.data.message=="Product Added Successfully in Wishlist"){
-       alert("Product Added Successfully in Wishlist")
-     }
-    } catch (error) {
-     console.log("Error",error)
+  const handleAddWish = async (id) => {
+    if (!isAuth) {
+      alert("Please login to add product to wishlist !!");
+    } else {
+      try {
+        const res = await axios.post(
+          `https://myntra-app-backend.vercel.app/wishlists/add/${id}`,
+          { withCredentials: true }
+        );
+        console.log(res);
+        if (res.data.message == "Product Added Successfully in Wishlist") {
+          alert("Product Added Successfully in Wishlist");
+        }
+      } catch (error) {
+        console.log("Error", error);
+      }
     }
- }
+  };
 
   return (
     <div className="singleProComponent">
@@ -106,7 +119,8 @@ const SingleProduct = () => {
                   marginRight: "20px",
                   color: "red",
                   cursor: "pointer",
-                }}>
+                }}
+              >
                 {size}
               </span>
             ))}
@@ -125,7 +139,7 @@ const SingleProduct = () => {
               <HiOutlineShoppingBag className="singleProIcons" />
               ADD TO BAG
             </button>
-            <button  onClick={()=>handleAddWish(id)}>
+            <button onClick={() => handleAddWish(id)}>
               <BiHeart className="singleProIcons" />
               ADD TO WISHLIST
             </button>

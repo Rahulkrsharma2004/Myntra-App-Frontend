@@ -1,9 +1,85 @@
-.wishlistMainDiv{
-    padding-top: 10px;
-}
-.blanksItem{
-    display: none;
-}
-.fillItem{
-    display: block;
-}
+/* Wishlist.css */
+
+.fillItem {
+    width: 100%;
+    border: 1px solid rgb(237, 237, 237);
+    padding-top: 6rem; /* Reduced padding for a more compact design */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items horizontally */
+    gap: 1rem; /* Gap between cards */
+  }
+  
+  .itemBag {
+    width: 100px; /* Set width for the card */
+    background-color: #ffffff; /* White background for the card */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Ensure the content fits within rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .itemBag:hover {
+    transform: scale(1.02); /* Slightly enlarge on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+  }
+  
+  .itemBag2 {
+    padding: 1rem; /* Padding inside the card */
+    text-align: center; /* Center text */
+  }
+  
+  .itemBag2 img {
+    width: 30%; /* Full width for the image */
+    height: 250px; /* Fixed height for image */
+    border-bottom: 1px solid #ddd; /* Border below the image */
+  }
+  
+  .itemBag2 h4 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .itemBag2 p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
+  }
+  
+  .itemBag2 .price {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .sizeOptions {
+    margin: 10px 0;
+  }
+  
+  .sizeOptions span {
+    margin-right: 10px;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .btnDiv {
+    margin-top: 10px;
+  }
+  
+  .deleteCart {
+    background-color: #dc3545; /* Red color for delete button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0 5px;
+  }
+  
+  .deleteCart:hover {
+    background-color: #c82333;
+  }
+  

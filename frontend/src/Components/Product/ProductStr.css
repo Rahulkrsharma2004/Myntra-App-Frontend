@@ -8,12 +8,20 @@
   }
   .itemImage {
     position: relative;
+    overflow: hidden;
     
   }
   .itemImage img {
     width: 100%;
     cursor: pointer;
   }
+  .itemImage img {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .itemImage img:hover {
+    transform: scale(1.1);
+  }  
   .itemBox a {
     text-decoration: none;
     color: black;

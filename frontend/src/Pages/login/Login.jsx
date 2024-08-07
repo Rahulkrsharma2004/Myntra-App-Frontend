@@ -1,6 +1,6 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Contexts/AuthContext";
 import { useToast} from "@chakra-ui/react";
@@ -35,6 +35,7 @@ const Login = () => {
         setUser(response.data.user.username);
         localStorage.setItem("setIsAuth", true);
         localStorage.setItem("setUser", response.data.user.username);
+        alert("Login Successful ")
         toast({
           title: "Login Successful",
           status: "success",
