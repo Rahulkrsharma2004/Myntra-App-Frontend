@@ -9,7 +9,7 @@ import axios from "axios";
 import { Context } from "../../Contexts/AuthContext";
 
 const SingleProduct = () => {
-  const { isAuth, setIsAuth } = useContext(Context);
+  const { isAuth } = useContext(Context);
   const { id } = useParams();
   console.log(id);
   const [product, setProduct] = useState([]);

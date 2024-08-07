@@ -8,7 +8,7 @@ import { useContext } from "react";
 const ProductStr = ({ product }) => {
   const { image, brand, title, price, _id: id } = product;
 
-  const { isAuth, setIsAuth } = useContext(Context);
+  const { isAuth } = useContext(Context);
 
   const handleAddWish = async (id) => {
     if (!isAuth) {

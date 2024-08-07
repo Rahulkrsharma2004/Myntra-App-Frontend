@@ -6,7 +6,7 @@ import "./Wishlist.css";
 import axios from "axios";
 
 const Wishlist = () => {
-  const { isAuth, setIsAuth } = useContext(Context);
+  const { isAuth } = useContext(Context);
   const [wishData, setWishData] = useState([]);
 
   if (!isAuth) {
@@ -26,9 +26,7 @@ const Wishlist = () => {
     }
   };
 
-  useEffect(() => {
-    showWishData();
-  }, []);
+  
 
   const handleMoveToBag = async (id) => {
     try {
@@ -74,6 +72,10 @@ const Wishlist = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    showWishData();
+  }, []);
 
   return (
     <div>
