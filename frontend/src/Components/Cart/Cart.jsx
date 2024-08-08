@@ -3,6 +3,7 @@ import "./Cart.css";
 import { Link } from "react-router-dom";
 const cart = () => {
   console.log("second")
+  console.log("second123")
   return (
     <div className="notLogin">
       <img src="https://constant.myntassets.com/checkout/assets/img/empty-bag.webp" alt="img" />
