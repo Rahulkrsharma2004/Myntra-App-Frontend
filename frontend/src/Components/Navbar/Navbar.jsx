@@ -14,9 +14,9 @@ const Navbar = () => {
   const [click, setClick] = useState(false);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
-  const { isAuth, setIsAuth } = useContext(Context);
-  const { user, setUser } = useContext(Context);
+  const { isAuth, setIsAuth ,user,setUser,totalItems} = useContext(Context);
 
+  console.log(totalItems,"navabar")
 
   const handleLogout = async () => {
     try {
@@ -283,7 +283,7 @@ const Navbar = () => {
           <div className="navIcons">
             <Link to="/bag">
               <HiOutlineShoppingBag className="sideIcons" />
-              <span>2</span>
+              <span>{totalItems}</span>
               <p className="display">Bag</p>
             </Link>
           </div>

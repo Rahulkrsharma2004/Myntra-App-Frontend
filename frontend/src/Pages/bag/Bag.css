@@ -1,53 +1,73 @@
-.itemBag{
-    height: 50%;
-    width: 50%;
-    padding: 20px;
-    /* z-index: 20px; */
-}
-.bagImage{
-    height: auto;
-    width: auto;
-    display: flex;
-}
-.imagebag{
-    width: 30%;
+.mainDivCart {
+  padding-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+  justify-content: center;
+  /* background-color: blue; */
 }
 .maincart{
-    padding-top: 6rem;
-    /* position: relative; */
-}
-.crossCut{
-  cursor: pointer;
-  font-weight: 600;
-  margin-left: 1rem;
-  font-size: 1.5rem;
-  background-color: aliceblue;
+  /* background-color: #2dc854;  */
+  /* border: 1px solid #ddd; */
+  border-radius: 8px; 
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  width: 100%; 
+  max-width: 550px;
+  height: 280px;
+  padding: 10px;
+  margin: 10px 0; 
+  display: flex;  
+  flex-direction: column;
 }
 
-.deleteCart {
-    border: none;
-    color: white;
-    background-color: #ff3f6c;
-    padding: 8px 10px;
-    border-radius: 5px;
-    margin-right: 19px;
-    cursor: pointer;
-  }
-  .deleteCart:hover {
-    background-color: #ff97b5;
-    color: rgb(51, 42, 42);
-  }
-.orderCart {
-    border: none;
-    color: rgb(255, 249, 249);
-    background-color: #26d696;
-    padding: 8px 10px;
-    border-radius: 5px;
-    margin-right: 19px;
-    margin-top: 5px;
-    cursor: pointer;
-  }
-  .orderCart:hover {
-    background-color: #89fb9a;
-    color: rgb(51, 42, 42);
-  }
+.itemBag {
+  display: flex;
+  align-items: center; 
+  width: auto;
+  /* height: 900px; */
+  /* background-color: rgb(212, 192, 192); */
+}
+
+.imagebag {
+  width: 200px; 
+  height: auto; 
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.sizeOptions span {
+  background-color: #e0e0e0; 
+  border-radius: 4px; 
+  padding: 5px 10px; 
+  margin-right: 10px; 
+  cursor: pointer;
+}
+
+.orderCart1 {
+  border: none;
+  color: #fff;
+  /* background-color: #26d696; */
+  padding: 10px 15px;
+  border-radius: 5px;
+  /* cursor: pointer; */
+  /* transition: background-color 0.3s ease, color 0.3s ease; */
+}
+.deleteItemfromBag {
+  background-color: #ff4e86;
+  color: white;
+  padding: 8px 20px; /* Add some padding */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 15px; /* Increase font size */
+  cursor: pointer;
+  border: 2px solid rgb(250, 60, 140);
+}
+
+.deleteItemfromBag:hover {
+  background-color: #ffffff;
+  color: rgb(255, 0, 43);
+  transition: .2s;
+}
+
+@media (max-width: 600px) {
+  
+}

@@ -1,85 +1,90 @@
-/* Wishlist.css */
-
 .fillItem {
-    width: 100%;
-    border: 1px solid rgb(237, 237, 237);
-    padding-top: 6rem; /* Reduced padding for a more compact design */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center items horizontally */
-    gap: 1rem; /* Gap between cards */
-  }
-  
-  .itemBag {
-    width: 100px; /* Set width for the card */
-    background-color: #ffffff; /* White background for the card */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    overflow: hidden; /* Ensure the content fits within rounded corners */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .itemBag:hover {
-    transform: scale(1.02); /* Slightly enlarge on hover */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
-  }
-  
-  .itemBag2 {
-    padding: 1rem; /* Padding inside the card */
-    text-align: center; /* Center text */
-  }
-  
-  .itemBag2 img {
-    width: 30%; /* Full width for the image */
-    height: 250px; /* Fixed height for image */
-    border-bottom: 1px solid #ddd; /* Border below the image */
-  }
-  
-  .itemBag2 h4 {
-    font-size: 18px;
-    color: #333;
-    margin: 10px 0;
-  }
-  
-  .itemBag2 p {
-    font-size: 16px;
-    color: #666;
-    margin: 10px 0;
-  }
-  
-  .itemBag2 .price {
-    font-size: 16px;
-    color: #333;
-    margin: 10px 0;
-  }
-  
-  .sizeOptions {
-    margin: 10px 0;
-  }
-  
-  .sizeOptions span {
-    margin-right: 10px;
-    color: #007bff;
-    cursor: pointer;
-  }
-  
-  .btnDiv {
-    margin-top: 10px;
-  }
-  
-  .deleteCart {
-    background-color: #dc3545; /* Red color for delete button */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin: 0 5px;
-  }
-  
-  .deleteCart:hover {
-    background-color: #c82333;
-  }
-  
+  width: 100%;
+  padding-top: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #f7f7f7; /* Light background for better contrast */
+  border-top: 1px solid rgb(237, 237, 237);
+}
+
+.itemwish {
+  width: 280px; /* Adjusted width for a better layout */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.itemwish:hover {
+  transform: scale(1.03); /* Slightly increased scale on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.itemwish2 {
+  padding: 1rem;
+  text-align: center;
+}
+
+.itemwish2 img {
+  width: 100%; /* Responsive image */
+  height: 200px; /* Set a consistent height */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px 8px 0 0; /* Rounded corners for the top part of the image */
+}
+
+.itemwish2 h4 {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+  font-weight: bold; /* Emphasize the brand name */
+}
+
+.itemwish2 p {
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+}
+
+.itemwish2 .price {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+  font-weight: bold; /* Emphasize the price */
+}
+
+.sizeOptions {
+  margin: 10px 0;
+}
+
+.sizeOptions span {
+  margin-right: 10px;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btnDiv {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around; /* Better alignment of buttons */
+}
+
+.deleteCart {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.deleteCart:hover {
+  background-color: #c82333;
+  transform: scale(1.05); /* Slight scale on hover */
+}

@@ -26,8 +26,6 @@ const Wishlist = () => {
     }
   };
 
-  
-
   const handleMoveToBag = async (id) => {
     try {
       const addToBagRes = await axios.post(
@@ -81,10 +79,10 @@ const Wishlist = () => {
     <div>
       <div className="fillItem">
         {wishData.map((ele) => (
-          <div className="itemBag" key={ele._id}>
-            <div className="itemBag2">
+          <div className="itemwish" key={ele._id}>
+            <div className="itemwish2">
               <Link to={`/product/${ele._id}`}>
-                <img src={ele.image} alt="ProductImage" className="imagebag" />
+                <img src={ele.image} alt="ProductImage" className="imagewish" />
               </Link>
               <h4>{ele.brand}</h4>
               <p>{ele.title}</p>
