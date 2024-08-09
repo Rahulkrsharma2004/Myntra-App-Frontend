@@ -100,7 +100,7 @@ const Wishlist = () => {
                   MOVE TO BAG
                 </button>
                 <button
-                  className="deleteCart"
+                  className="deleteCart" style={{marginLeft:"1rem"}}
                   onClick={() => handleDeleteWish(ele._id)}
                 >
                   REMOVE ITEM
