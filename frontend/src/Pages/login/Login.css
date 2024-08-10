@@ -12,8 +12,8 @@
     margin: auto;
     padding: 2rem 0;
     display: flex;
-    background-color: rgba(255, 0, 230, 0.235);
-    backdrop-filter: blur(100px);
+    background-color: rgba(255, 0, 230, 0.084);
+    backdrop-filter: blur(10px);
   }
 
   .loginImage {
