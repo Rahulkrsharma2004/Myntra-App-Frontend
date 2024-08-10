@@ -83,7 +83,7 @@ const Signup = () => {
       <div className="signupContainer">
         <div className="signupImage">
           <img
-            src="{signupimg}"
+            src="https://cdni.iconscout.com/illustration/premium/thumb/sign-up-4922762-4097209.png"
             alt="Signup"
           />
         </div>
