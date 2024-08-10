@@ -1,19 +1,21 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import Cookies from "js-cookie";
+// import Cookies from "js-cookie";
 import { BiSearch, BiUser, BiHeart } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdClose } from "react-icons/md";
 import { Dropdown } from "antd";
 import { Context } from "../../Contexts/AuthContext";
+import { useToast } from "@chakra-ui/react";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+  const toast = useToast()
   const { isAuth, setIsAuth ,user,setUser,totalItems} = useContext(Context);
 
   console.log(totalItems,"navabar")
@@ -28,7 +30,14 @@ const Navbar = () => {
         setUser("")
         localStorage.removeItem("setIsAuth",false)
         localStorage.removeItem("setUser","")
-        alert('Logout Successfully')
+        // alert('Logout Successfully')
+        toast({
+          title: 'Logout Successfully',
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        })
         navigate("/")
       }
 
@@ -105,7 +114,7 @@ const Navbar = () => {
 
     {
       label: isAuth ? (
-        <p onClick={handleLogout} p="10px" style={{ color: "red" }}>
+        <p onClick={handleLogout} style={{ color: "red" }}>
           LOGOUT
         </p>
       ) : (

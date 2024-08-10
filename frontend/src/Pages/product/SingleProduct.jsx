@@ -6,16 +6,16 @@ import { RiStarSFill } from "react-icons/ri";
 import { BiHeart, BiDetail } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 import { Context } from "../../Contexts/AuthContext";
 
 const SingleProduct = () => {
   const { isAuth } = useContext(Context);
   const { id } = useParams();
-  console.log(id);
   const [product, setProduct] = useState([]);
   const [proQuantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
-  console.log(product);
+  const toast = useToast(); // Initialize toast
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,38 +49,80 @@ const SingleProduct = () => {
 
   const handleAddBag = async (id) => {
     if (!isAuth) {
-      alert("Please login to add product to bag !!");
+      toast({
+        title: "Login Required",
+        description: "Please login to add the product to your bag.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
     } else {
       try {
         const res = await axios.post(
           `https://myntra-app-backend.vercel.app/carts/add/${id}`,
           { withCredentials: true }
         );
-        console.log(res);
-        if (res.data.message == "Product Added Successfully") {
-          alert("Product Added Successfully In Bag");
+        if (res.data.message === "Product Added Successfully") {
+          toast({
+            title: "Added to Bag",
+            description: "Product has been added to your bag successfully.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
         }
       } catch (error) {
         console.log(error);
+        toast({
+          title: "Error",
+          description: "An error occurred while adding the product to your bag.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
       }
     }
   };
 
   const handleAddWish = async (id) => {
     if (!isAuth) {
-      alert("Please login to add product to wishlist !!");
+      toast({
+        title: "Login Required",
+        description: "Please login to add the product to your wishlist.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
     } else {
       try {
         const res = await axios.post(
           `https://myntra-app-backend.vercel.app/wishlists/add/${id}`,
           { withCredentials: true }
         );
-        console.log(res);
-        if (res.data.message == "Product Added Successfully in Wishlist") {
-          alert("Product Added Successfully in Wishlist");
+        if (res.data.message === "Product Added Successfully in Wishlist") {
+          toast({
+            title: "Added to Wishlist",
+            description: "Product has been added to your wishlist successfully.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
         }
       } catch (error) {
         console.log("Error", error);
+        toast({
+          title: "Error",
+          description: "An error occurred while adding the product to your wishlist.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
       }
     }
   };

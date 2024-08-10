@@ -1,13 +1,15 @@
 import { useState, useContext } from "react";
 import axios from "axios";
 // import Cookies from "js-cookie";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Contexts/AuthContext";
-import { useToast} from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import "./Login.css";
 
 const Login = () => {
   const [userDetails, setUserDetails] = useState({ email: "", pass: "" });
+  const [showPassword, setShowPassword] = useState(false); 
   const { setIsAuth, setUser } = useContext(Context);
   const toast = useToast();
   const navigate = useNavigate();
@@ -35,27 +37,33 @@ const Login = () => {
         setUser(response.data.user.username);
         localStorage.setItem("setIsAuth", true);
         localStorage.setItem("setUser", response.data.user.username);
-        alert("Login Successful ")
+        // alert("Login Successful ")
         toast({
           title: "Login Successful",
+          description: "You have been logged in successfully",
           status: "success",
-          isClosable: true,
+          duration: 5000,
+          position: "top",
         });
         navigate("/");
       } else if (response.data.msg === "Register first or Wrong crendential") {
         toast({
-          title: "Register first or Wrong crendential",
+          title: "Not Register",
+          description: "Please register first or enter correct credentials",
           status: "error",
           isClosable: true,
+          position: "top",
         });
       }
     } catch (error) {
       console.log(error);
       if (error.response.data === "User not found") {
         toast({
-          title: "User not found.Please sign up first.",
+          title: "User not found",
+          description: "Please signup first or enter correct credentials",
           status: "error",
           isClosable: true,
+          position: "top",
         });
       }
     }
@@ -72,7 +80,7 @@ const Login = () => {
         </div>
         <div className="loginDetail">
           <div>
-            <h3>Login</h3>
+            <h3 style={{fontSize:"30px",fontWeight:"bold"}}>LOGIN HERE</h3>
           </div>
           <div className="formInput">
             <form onSubmit={handleLoginUser}>
@@ -85,19 +93,27 @@ const Login = () => {
                 required
                 placeholder="Enter email"
               />
-              <input
-                className="loginInput"
-                name="pass"
-                value={userDetails.pass}
-                onChange={handleUserDetails}
-                type="password"
-                required
-                placeholder="Set a password"
-              />
+              <div className="passwordContainer">
+                <input
+                  className="loginInput"
+                  name="pass"
+                  value={userDetails.pass}
+                  onChange={handleUserDetails}
+                  required
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Set a password"
+                />
+                <span
+                  className="passwordToggleIcon"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               <p>
                 New User? <Link to="/signup">Signup</Link>.
               </p>
-              <button type="submit">SUBMIT</button>
+              <button type="submit" className="loginBtn">SUBMIT</button>
             </form>
           </div>
         </div>

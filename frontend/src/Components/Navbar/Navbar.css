@@ -6,10 +6,11 @@
     padding: 0 4rem;
     display: block;
     position: fixed;
-    /* position: relative; */
     z-index: 99;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.493);
+    /* background-color: rgb(255, 255, 255); */
     box-shadow: rgba(100, 100, 111, 0.09) 0px 7px 20px 0px;
+    backdrop-filter: blur(10px);
   }
   
   .container > div {

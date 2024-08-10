@@ -3,10 +3,12 @@ import axios from "axios";
 import "./Bag.css";
 import Cart from "../../Components/Cart/Cart";
 import { Context } from "../../Contexts/AuthContext";
+import { useToast } from "@chakra-ui/react";
 
 const Bag = () => {
   const { isAuth, setTotalItems } = useContext(Context);
   const [cartData, setCartData] = useState([]);
+  const toast = useToast()
 
   useEffect(() => {
     if (isAuth) {
@@ -40,7 +42,15 @@ const Bag = () => {
       console.log(deleteFromBag);
 
       if (deleteFromBag.data.message === "Item is removed from cart!") {
-        alert("Product Deleted !!");
+        // alert("Product Deleted !!");
+        toast({
+          title: 'Product Deleted',
+          description: 'Product has been deleted from your cart',
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        })
         setCartData((prevBagData) =>
           prevBagData.filter((item) => item._id !== id)
         );

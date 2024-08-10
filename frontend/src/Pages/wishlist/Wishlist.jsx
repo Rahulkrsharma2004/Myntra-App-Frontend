@@ -4,10 +4,12 @@ import { Context } from "../../Contexts/AuthContext";
 import { Link } from "react-router-dom";
 import "./Wishlist.css";
 import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 const Wishlist = () => {
   const { isAuth } = useContext(Context);
   const [wishData, setWishData] = useState([]);
+  const toast = useToast(); // Initialize toast
 
   if (!isAuth) {
     return <Login />;
@@ -19,7 +21,6 @@ const Wishlist = () => {
         `https://myntra-app-backend.vercel.app/wishlists/`,
         { withCredentials: true }
       );
-      console.log(res.data.myWishlist);
       setWishData(res.data.myWishlist);
     } catch (error) {
       console.log("error", error);
@@ -41,13 +42,28 @@ const Wishlist = () => {
         addToBagRes.data.message === "Product Added Successfully" &&
         deleteFromWishlistRes.data.message === "Item was removed from Wishlist!"
       ) {
-        alert("Product moved to Bag");
+        toast({
+          title: "Product Moved",
+          description: "Product has been moved to your bag successfully.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
         setWishData((prevWishData) =>
           prevWishData.filter((item) => item._id !== id)
         );
       }
     } catch (error) {
       console.log(error);
+      toast({
+        title: "Error",
+        description: "An error occurred while moving the product to your bag.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
     }
   };
 
@@ -61,13 +77,28 @@ const Wishlist = () => {
       if (
         deleteFromWishlistRes.data.message === "Item was removed from Wishlist!"
       ) {
-        alert("Item removed from Wishlist");
+        toast({
+          title: "Item Removed",
+          description: "Item has been removed from your wishlist.",
+          status: "info",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
         setWishData((prevWishData) =>
           prevWishData.filter((item) => item._id !== id)
         );
       }
     } catch (error) {
       console.log(error);
+      toast({
+        title: "Error",
+        description: "An error occurred while removing the item from your wishlist.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
     }
   };
 

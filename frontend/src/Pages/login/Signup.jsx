@@ -1,71 +1,102 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../../Contexts/AuthContext";
+import { useToast } from "@chakra-ui/react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import signupimg from "../../assets/signupimg.PNG"
 
 const Signup = () => {
+  const [userDetails, setUserDetails] = useState({
+    username: "",
+    email: "",
+    pass: "",
+  });
 
-  const [userDetails, setUserDetails] = useState({ username: "", email: "", pass: "" })
-  const nevigate = useNavigate()
+  const [showPassword, setShowPassword] = useState(false); 
+  const navigate = useNavigate();
+  const toast = useToast();
 
   const handleUserDetails = (e) => {
-    const { name, value } = e.target
+    const { name, value } = e.target;
 
     setUserDetails((userDetails) => ({
       ...userDetails,
-      [name]: value
+      [name]: value,
     }));
-
-  }
-
+  };
 
   const handleRegisterUser = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      let response = await axios.post("https://myntra-app-backend.vercel.app/users/register", userDetails, { withCredentials: true })
-      console.log(response)
+      let response = await axios.post(
+        "https://myntra-app-backend.vercel.app/users/register",
+        userDetails,
+        { withCredentials: true }
+      );
+      console.log(response);
 
-      if (response.data.msg == 'New user has been created') {
-        alert("Registered Successfully")
-        nevigate("/login")
+      if (response.data.msg === "New user has been created") {
+        toast({
+          title: "Registration Successful",
+          description: "You have successfully registered",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
+        navigate("/login");
+      } else if (response.data.error === "User with this email already exists") {
+        toast({
+          title: "Email Already Registered",
+          description: "A user with this email already exists",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
+      } else if (response.data.error === "Invalid password format") {
+        toast({
+          title: "Invalid Password",
+          description: "Please use a valid password format",
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        });
       }
-
-      if (response.data.error == 'User with this email already exists') {
-        alert("User with this email already exists")
-      }
-
-      if (response.data.error == 'Invalid password format') {
-        alert("Invalid password format")
-      }
-
-
     } catch (error) {
-      console.log(error.message)
-
+      console.log(error.message);
+      toast({
+        title: "Registration Failed",
+        description: "An error occurred while registering",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top",
+      });
     }
-
-
-  }
-
-
+  };
 
   return (
     <div className="signup">
       <div className="signupContainer">
         <div className="signupImage">
-          <img src="https://th.bing.com/th/id/OIP.tS00rINUSwd2e-c2_hZv-AAAAA?rs=1&pid=ImgDetMain" alt="" />
+          <img
+            src={signupimg}
+            alt="Signup"
+          />
         </div>
         <div className="signupDetail">
           <div>
-            <h3>Signup</h3>
+            <h3 style={{fontSize:"30px",fontWeight:"bold"}}>SIGNUP HERE</h3>
           </div>
           <div>
             <form onSubmit={handleRegisterUser}>
               <input
                 className="loginInput"
                 name="username"
-                value={userDetails.name}
+                value={userDetails.username}
                 onChange={handleUserDetails}
                 type="text"
                 required
@@ -80,23 +111,28 @@ const Signup = () => {
                 required
                 placeholder="Enter email"
               />
-              <input
-                className="loginInput"
-                name="pass"
-                value={userDetails.password}
-                onChange={handleUserDetails}
-                required
-                type="password"
-                placeholder="Set a password"
-              />
+              <div className="passwordContainer">
+                <input
+                  className="loginInput passwordInput"
+                  name="pass"
+                  value={userDetails.pass}
+                  onChange={handleUserDetails}
+                  required
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Set a password"
+                />
+                <span
+                  className="passwordToggleIcon"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               <p>
-                Already a User ? <Link to="/login">Login .</Link>
+                Already a User? <Link to="/login">Login</Link>
               </p>
-              <button type="submit" >
-                CONTINUE
-              </button>
+              <button type="submit"  className="signupBtn">CONTINUE</button>
             </form>
-
           </div>
         </div>
       </div>

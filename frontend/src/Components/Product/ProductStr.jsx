@@ -1,30 +1,53 @@
-// import React from "react";
 import axios from "axios";
 import "./ProductStr.css";
 import { Link } from "react-router-dom";
 import { Context } from "../../Contexts/AuthContext";
 import { useContext } from "react";
+import { useToast } from "@chakra-ui/react";
 
 const ProductStr = ({ product }) => {
   const { image, brand, title, price, _id: id } = product;
-
   const { isAuth } = useContext(Context);
+  const toast = useToast();
 
   const handleAddWish = async (id) => {
     if (!isAuth) {
-      alert("You are not Login !!");
+      toast({
+        title: "Not Logged In",
+        description: "You need to log in to add items to your wishlist.",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position:"top"
+      });
     } else {
       try {
         const res = await axios.post(
           `https://myntra-app-backend.vercel.app/wishlists/add/${id}`,
           { withCredentials: true }
         );
-        console.log(res);
-        if (res.data.message == "Product Added Successfully in Wishlist") {
-          alert("Product Added Successfully in Wishlist");
+        console.log(res)
+        if (res.data.message === "Product Added Successfully in Wishlist" ) {
+          // alert("Added")
+          toast({
+            title: "Product Added",
+            description: "The product was successfully added to your wishlist.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position:"top"
+          });
         }
       } catch (error) {
-        console.log("Error", error);
+        console.error("Error", error);
+        toast({
+          title: "Error",
+          description: "There was an error adding the product to your wishlist.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        });
       }
     }
   };
