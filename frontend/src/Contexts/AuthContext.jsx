@@ -4,7 +4,7 @@ export const Context = createContext()
 const AuthContext = ({children}) => {
     const [isAuth,setIsAuth] = useState(false)
     const [user,setUser] = useState("")
-    const [totalItems, setTotalItems] = useState();
+    const [totalItems, setTotalItems] = useState(0);
     useEffect(()=>{
       setIsAuth(localStorage.getItem("setIsAuth"))
       setUser(localStorage.getItem("setUser"))
