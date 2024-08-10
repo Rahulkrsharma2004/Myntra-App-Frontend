@@ -7,8 +7,8 @@ import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 
 const Wishlist = () => {
-  const { isAuth } = useContext(Context);
   const [wishData, setWishData] = useState([]);
+  const { isAuth } = useContext(Context);
   const toast = useToast(); // Initialize toast
 
   if (!isAuth) {
