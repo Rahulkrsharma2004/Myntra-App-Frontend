@@ -58,7 +58,7 @@ const Signup = () => {
       } else if (response.data.error === "Invalid password format") {
         toast({
           title: "Invalid Password",
-          description: "Please use a valid password format",
+          description: "Your password should have 1 Uppercase and 1 Lowercase Letter, 1 Special Character, 1 Number, and at least 8 Characters",
           status: "warning",
           duration: 5000,
           isClosable: true,
