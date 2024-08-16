@@ -22,8 +22,12 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("https://myntra-app-backend.vercel.app/users/logout", {} , { withCredentials: true })
-      console.log(response)
+      console.log("first")
+      const response = await axios.post("https://myntra-app-backend.vercel.app/users/logout",{},
+        { withCredentials: true }
+      )
+      console.log("response",response)
+      console.log("second")
       // Cookies.remove("ACCESS_TOKEN")
       if (response.data == 'Logout Successfully') {
         setIsAuth(false)
@@ -43,7 +47,14 @@ const Navbar = () => {
 
     } catch (error) {
       if (error.response == 'Internal Server Error') {
-        alert("Internal Server Error")
+        // alert("Internal Server Error")
+        toast({
+          title:"Internal Server Error",
+          status: 'success',
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        })
         console.log("first")
       }
     }
@@ -247,7 +258,9 @@ const Navbar = () => {
               <h3 style={{ color: isAuth ? "green" : "" }} className="mobItem">{isAuth ? "WELCOME USER" : ""} </h3>
 
               <h4 className="mobItem" onClick={handleClick} >
-                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{isAuth ? "LOGOUT" : "LOGIN / SIGNUP"}</Link>
+                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{isAuth ? <p onClick={handleLogout} style={{ color: "red" }}>
+          LOGOUT
+        </p> : "LOGIN / SIGNUP"}</Link>
               </h4>
             </ul>
           </nav>

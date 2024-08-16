@@ -9,6 +9,7 @@ import { useToast } from "@chakra-ui/react";
 const Wishlist = () => {
   const [wishData, setWishData] = useState([]);
   const { isAuth } = useContext(Context);
+  const {setTotalItems} = useContext(Context)
   const toast = useToast(); // Initialize toast
 
   if (!isAuth) {
@@ -50,9 +51,11 @@ const Wishlist = () => {
           isClosable: true,
           position: "top",
         });
+        setTotalItems((prevTotalItems) => prevTotalItems + 1);
         setWishData((prevWishData) =>
           prevWishData.filter((item) => item._id !== id)
         );
+
       }
     } catch (error) {
       console.log(error);
