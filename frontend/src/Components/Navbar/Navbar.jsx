@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-// import Cookies from "js-cookie";
 import { BiSearch, BiUser, BiHeart } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -15,51 +14,54 @@ const Navbar = () => {
   const [click, setClick] = useState(false);
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
-  const toast = useToast()
-  const { isAuth, setIsAuth ,user,setUser,totalItems} = useContext(Context);
+  const toast = useToast();
+  const { isAuth, setIsAuth, user, setUser, totalItems } = useContext(Context);
 
-  console.log(totalItems,"navabar")
+  console.log(totalItems, "navabar");
 
   const handleLogout = async () => {
     try {
-      console.log("first")
-      const response = await axios.post("https://myntra-app-backend.vercel.app/users/logout",{},
+      console.log("first");
+      const response = await axios.post(
+        "https://myntra-app-backend.vercel.app/users/logout",
+        {},
         { withCredentials: true }
-      )
-      console.log("response",response)
-      console.log("second")
+      );
+      console.log("response", response);
+      console.log("second");
       // Cookies.remove("ACCESS_TOKEN")
-      if (response.data == 'Logout Successfully') {
-        setIsAuth(false)
-        setUser("")
-        localStorage.removeItem("setIsAuth",false)
-        localStorage.removeItem("setUser","")
+      if (response.data == "Logout Successfully") {
+        setIsAuth(false);
+        setUser("");
+        localStorage.removeItem("setIsAuth", false);
+        localStorage.removeItem("setUser", "");
         // alert('Logout Successfully')
         toast({
-          title: 'Logout Successfully',
-          status: 'success',
+          title: "Logout Successfully",
+          status: "success",
           duration: 5000,
           isClosable: true,
-          position:"top"
-        })
-        navigate("/")
+          position: "top",
+        });
+        navigate("/");
       }
-
     } catch (error) {
-      if (error.response == 'Internal Server Error') {
+      if (error.response == "Internal Server Error") {
         // alert("Internal Server Error")
         toast({
-          title:"Internal Server Error",
-          status: 'success',
+          title: "Internal Server Error",
+          status: "success",
           duration: 5000,
           isClosable: true,
-          position:"top"
-        })
-        console.log("first")
+          position: "top",
+        });
+        console.log("first");
       }
     }
+  };
 
-  }
+
+  // search functionality
 
   const handleClick = (param = "", value = "") => {
     setClick(!click);
@@ -75,9 +77,13 @@ const Navbar = () => {
     }
   };
 
+
+
+
+
+
   const styleA = { left: "-100%" };
   const styleB = { left: "0%" };
-
 
   const items = [
     {
@@ -112,7 +118,7 @@ const Navbar = () => {
       type: "divider",
     },
     {
-      label: <Link to="/wishlist" >Wishlist</Link>,
+      label: <Link to="/wishlist">Wishlist</Link>,
       key: "3",
     },
     {
@@ -129,14 +135,13 @@ const Navbar = () => {
           LOGOUT
         </p>
       ) : (
-        <Link padding="10px" to="/login" style={{ color: "green" }}>LOGIN / SIGNUP</Link>
+        <Link padding="10px" to="/login" style={{ color: "green" }}>
+          LOGIN / SIGNUP
+        </Link>
       ),
       key: "0",
     },
-
   ];
-
-
 
   return (
     <div className="container">
@@ -159,23 +164,28 @@ const Navbar = () => {
                 <MdClose className="cross" onClick={() => handleClick()} />
               </p>
 
-              <li
-                className="menuItem"
-                onClick={() => handleClick("", "")}
-              >
+              <li className="menuItem" onClick={() => handleClick("", "")}>
                 <Link>ALL</Link>
                 <div className="subMenu megaMenu menuColumn">
                   <div className="menuList">
                     <ul>
                       <p>Men</p>
-                      <li onClick={() => handleClick("subcategory", "T-shirts")}>
-                        <Link to={`/product?subcategories=T-shirts`} >T-Shirts</Link>
+                      <li
+                        onClick={() => handleClick("subcategory", "T-shirts")}
+                      >
+                        <Link to={`/product?subcategories=T-shirts`}>
+                          T-Shirts
+                        </Link>
                       </li>
-                      <li onClick={() => handleClick("subcategory", "Flip Flops")}>
-                        <Link to={`/product?subcategories=Flip-Flops`} >Flip Flops</Link>
+                      <li
+                        onClick={() => handleClick("subcategory", "Flip Flops")}
+                      >
+                        <Link to={`/product?subcategories=Flip-Flops`}>
+                          Flip Flops
+                        </Link>
                       </li>
                       <li onClick={() => handleClick("subcategory", "Jeans")}>
-                        <Link to={`/product?subcategories=Jeans`} >Jeans</Link>
+                        <Link to={`/product?subcategories=Jeans`}>Jeans</Link>
                       </li>
                     </ul>
                   </div>
@@ -255,17 +265,28 @@ const Navbar = () => {
               </li>
               <br />
 
-              <h3 style={{ color: isAuth ? "green" : "" }} className="mobItem">{isAuth ? "WELCOME USER" : ""} </h3>
+              <h3 style={{ color: isAuth ? "green" : "" }} className="mobItem">
+                {isAuth ? "WELCOME USER" : ""}{" "}
+              </h3>
 
-              <h4 className="mobItem" onClick={handleClick} >
-                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>{isAuth ? <p onClick={handleLogout} style={{ color: "red" }}>
-          LOGOUT
-        </p> : "LOGIN / SIGNUP"}</Link>
+              <h4 className="mobItem" onClick={handleClick}>
+                <Link to="/login" style={{ color: isAuth ? "red" : "green" }}>
+                  {isAuth ? (
+                    <p onClick={handleLogout} style={{ color: "red" }}>
+                      LOGOUT
+                    </p>
+                  ) : (
+                    "LOGIN / SIGNUP"
+                  )}
+                </Link>
               </h4>
             </ul>
           </nav>
         </div>
         <div className="nav-item item-right">
+
+        {/* search functionality */}
+
           <div
             className="navSearch"
             onKeyUp={({ keyCode }) => {
@@ -281,6 +302,9 @@ const Navbar = () => {
             />
             <BiSearch className="searchIcon" onClick={handleSearchClick} />
           </div>
+
+
+
           <div className="navIcons hide">
             <BiSearch className="sideIcons" />
           </div>
@@ -290,18 +314,24 @@ const Navbar = () => {
               placement="bottom"
               trigger={["hover"]}
             >
-              <Link onClick={(e) => e.preventDefault()} style={{ color: isAuth ? "green" : "" }}>
+              <Link
+                onClick={(e) => e.preventDefault()}
+                style={{ color: isAuth ? "green" : "" }}
+              >
                 <BiUser className={isAuth ? "sideIconspro" : "sideIcons"} />
                 <p className="display">Profile</p>
               </Link>
             </Dropdown>
           </div>
+
           <div className="navIcons display">
-            <Link to="/wishlist">
+            <Link to="/wishlist" data-tip="Wishlist">
               <BiHeart className="sideIcons" />
               <p className="display">Wishlist</p>
             </Link>
+            {/* <ReactTooltip place="top" type="dark" effect="solid" /> */}
           </div>
+
           <div className="navIcons">
             <Link to="/bag">
               <HiOutlineShoppingBag className="sideIcons" />

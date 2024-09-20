@@ -15,8 +15,7 @@ const SingleProduct = () => {
   const [product, setProduct] = useState([]);
   const [proQuantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
-  const toast = useToast(); // Initialize toast
-
+  const toast = useToast();
   useEffect(() => {
     const fetchProduct = async () => {
       try {

@@ -2,7 +2,6 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "./Home.css";
 import { Link } from "react-router-dom";
-// import MetaData from "../../Components/MetaData";
 import sliderimg1 from "../../assets/slide1.webp";
 import sliderimg2 from "../../assets/slide2.webp";
 import sliderimg3 from "../../assets/slide3.webp";
@@ -23,7 +22,6 @@ import cardimg12 from "../../assets/img12.jpeg";
 const Home = () => {
   return (
     <div>
-      {/* <MetaData title={"Home Page"} /> */}
 
       <div className="HomeCarousel">
         <Carousel infiniteLoop autoPlay>

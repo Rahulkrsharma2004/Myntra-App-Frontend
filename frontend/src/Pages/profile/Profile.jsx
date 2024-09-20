@@ -14,23 +14,35 @@ const Profile = () => {
     shipping: user?.shipping || "",
   });
   const [modal2Open, setModal2Open] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
 
   if (!isAuth) {
     return <Login />;
   }
 
   const handleFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+      const fileReader = new FileReader();
+      fileReader.onload = () => {
+        setFormData((prevData) => ({ ...prevData, avatar: fileReader.result }));
+      };
+      fileReader.readAsDataURL(file);
+    }
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    let updatedData = {};
+    let updatedData = { ...formData };
 
-    for (let key in formData) {
-      if (formData[key] !== "") {
-        updatedData[key] = formData[key];
-      }
+    if (!selectedFile) {
+      updatedData.avatar = user.avatar; // Preserve the existing avatar if no new file is selected
     }
 
     setUser((prevUser) => ({
@@ -45,8 +57,11 @@ const Profile = () => {
   return (
     <div className="profile">
       <div className="profileCon">
+        <h2 style={{ textAlign: "center", color: "Highlight", fontWeight: "bold", fontSize: "1.5rem" }}>
+          Create Your Profile
+        </h2>
         <div className="profileImage">
-          <img src={user?.avatar || "default-avatar-url"} alt="avatar" />
+          <img src={formData.avatar || "default-avatar-url"} alt="" />
           <button
             onClick={() => setModal2Open(true)}
             className="editProfileBtn"
@@ -112,12 +127,9 @@ const Profile = () => {
             />
             <br />
             <input
-              name="avatar"
-              value={formData.avatar}
-              onChange={handleFormChange}
-              type="url"
-              required
-              placeholder="Paste avatar link"
+              type="file"
+              onChange={handleFileChange}
+              accept="image/*"
             />
             <br />
             <input
@@ -140,7 +152,6 @@ const Profile = () => {
               <option value="other">Others</option>
             </select>
             <br />
-
             <div className="modalActions">
               <button
                 type="button"

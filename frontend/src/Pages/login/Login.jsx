@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-// import Cookies from "js-cookie";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../../Contexts/AuthContext";

@@ -5,7 +5,9 @@ import { Context } from "../../Contexts/AuthContext";
 import { useContext } from "react";
 import { useToast } from "@chakra-ui/react";
 
+// eslint-disable-next-line react/prop-types
 const ProductStr = ({ product }) => {
+// eslint-disable-next-line react/prop-types
   const { image, brand, title, price, _id: id } = product;
   const { isAuth } = useContext(Context);
   const toast = useToast();

@@ -125,10 +125,12 @@
   .searchIcon {
     color: rgb(91, 91, 91);
     font-size: 19px;
+    cursor: pointer;
   }
   .sideIcons {
     color: rgb(110, 109, 109);
     font-size: 19px;
+    cursor: pointer;
   }
   .sideIconspro {
     color: green;
@@ -138,6 +140,7 @@
   }
   .hide {
     display: none;
+    cursor: pointer;
   }
   .subMenu {
     position: absolute;
@@ -202,6 +205,14 @@
     display: none;
     cursor: pointer;
   }
+  .hideSearch {
+    display: none;
+  }
+  
+  .showSearch {
+    display: block;
+  }
+  
   @media (max-width: 1600px) {
     .megaMenu {
       left: 45%;
@@ -224,11 +235,16 @@
     }
     .sideIcons {
       font-size: 22px;
+      cursor: pointer;
     }
   }
   @media (max-width: 920px) {
     .logo img {
       width: 40px;
+    }
+    .sideIcons {
+      /* font-size: 24px; */
+      cursor: pointer;
     }
     .hamburger {
       display: flex;
@@ -338,6 +354,7 @@
     }
     .sideIcons {
       font-size: 24px;
+      cursor: pointer;
     }
     .logo img {
       width: 35px;
@@ -369,6 +386,7 @@
   @media (max-width: 320px) {
     .sideIcons {
       font-size: 24px;
+      cursor: pointer;
     }
     .sideIcons {
       font-size: 22px;

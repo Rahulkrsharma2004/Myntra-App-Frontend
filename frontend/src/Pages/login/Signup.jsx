@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import signupimg from "../../assets/signupimg.PNG"
 
 const Signup = () => {
   const [userDetails, setUserDetails] = useState({

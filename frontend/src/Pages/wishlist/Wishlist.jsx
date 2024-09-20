@@ -10,7 +10,7 @@ const Wishlist = () => {
   const [wishData, setWishData] = useState([]);
   const { isAuth } = useContext(Context);
   const {setTotalItems} = useContext(Context)
-  const toast = useToast(); // Initialize toast
+  const toast = useToast(); 
 
   if (!isAuth) {
     return <Login />;

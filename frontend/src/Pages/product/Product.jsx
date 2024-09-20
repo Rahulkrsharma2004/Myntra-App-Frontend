@@ -4,7 +4,16 @@ import ProductStr from "../../Components/Product/ProductStr";
 import { Select, Skeleton, Checkbox } from "antd";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { Box, VStack, Stack, RadioGroup, Divider, Text, CheckboxGroup, HStack } from '@chakra-ui/react';
+import {
+  Box,
+  VStack,
+  Stack,
+  RadioGroup,
+  Divider,
+  Text,
+  CheckboxGroup,
+  HStack,
+} from "@chakra-ui/react";
 import { useSearchParams } from "react-router-dom";
 
 const Product = () => {
@@ -45,7 +54,9 @@ const Product = () => {
 
       console.log(`Fetching products from: ${endpoint}?${params.toString()}`);
 
-      const response = await axios.get(`${endpoint}?${params.toString()}`, { withCredentials: true });
+      const response = await axios.get(`${endpoint}?${params.toString()}`, {
+        withCredentials: true,
+      });
 
       console.log("API Response:", response.data);
 
@@ -54,7 +65,6 @@ const Product = () => {
       setTimeout(() => {
         setProLoading(false);
       }, 5000);
-
     } catch (error) {
       console.log("Error fetching products:", error);
       setProLoading(false);
@@ -65,6 +75,11 @@ const Product = () => {
     getProducts();
   }, [category, page]);
 
+
+
+  // filter functionality
+
+
   const handleSortChange = (value) => {
     console.log("Selected Sort By:", value);
     setSortBy(value);
@@ -72,23 +87,38 @@ const Product = () => {
 
   const handleType = (el) => {
     setSearchParams({ ...searchParams, type: el });
-  }
+  };
 
   const handleCategory = (el) => {
     setSearchParams({ ...searchParams, category: el });
-  }
+  };
 
   const handleBrand = (el) => {
     setSearchParams({ ...searchParams, brand: el });
-  }
+  };
 
   const handleSelectAllCategories = (checked) => {
     if (checked) {
-      setSearchParams({ ...searchParams, category: ['TShirts', 'Jeans', 'Kurta Sets', 'Trousers', 'Sarees', 'Flip-Flops', 'Lipstick', 'Face-Wash', 'Heeels'] });
+      setSearchParams({
+        ...searchParams,
+        category: [
+          "TShirts",
+          "Jeans",
+          "Kurta Sets",
+          "Trousers",
+        ],
+      });
     } else {
       setSearchParams({ ...searchParams, category: [] });
     }
-  }
+  };
+
+
+
+
+
+
+
 
   const sortedProducts = [...products].sort((a, b) => {
     if (sortBy === "asc") {
@@ -124,35 +154,69 @@ const Product = () => {
       </div>
       <div className="proBox">
         <div className="proFilters">
-          <VStack alignItems={"flex-start"} spacing={1} position={"sticky"} bottom={"1000px"}>
-            <HStack mt={"8px"} pl={4} fontWeight={700}>FILTERS</HStack>
+          <VStack
+            alignItems={"flex-start"}
+            spacing={1}
+            position={"sticky"}
+            bottom={"1000px"}
+          >
+            <HStack mt={"8px"} pl={4} fontWeight={700}>
+              FILTERS
+            </HStack>
             <Divider />
             <Box pl={4}>
-              <RadioGroup onChange={handleType} value={searchParams.get("type")} size={"sm"}>
-              </RadioGroup>
+              <RadioGroup
+                onChange={handleType}
+                value={searchParams.get("type")}
+                size={"sm"}
+              ></RadioGroup>
             </Box>
             <Divider />
             <Box pl={4}>
-              <Text fontSize={"14px"} fontWeight={700} color="#282c3f" textAlign={"left"}>CATEGORIES</Text>
-              <CheckboxGroup size={"sm"} onChange={handleCategory} defaultValue={searchParams.getAll("category")}>
+              <Text
+                fontSize={"14px"}
+                fontWeight={700}
+                color="#282c3f"
+                textAlign={"left"}
+              >
+                CATEGORIES
+              </Text>
+              <CheckboxGroup
+                size={"sm"}
+                onChange={handleCategory}
+                defaultValue={searchParams.getAll("category")}
+              >
                 <VStack alignItems={"flex-start"} mt={"3"} spacing={4}>
                   <Checkbox value="TShirts">TShirts</Checkbox>
                   <Checkbox value="Jeans">Jeans</Checkbox>
                   <Checkbox value="Kurta Sets">Kurta Sets</Checkbox>
                   <Checkbox value="Trousers">Trousers</Checkbox>
-                  <Checkbox value="Sarees">Sarees</Checkbox>
-                  <Checkbox value="Flip-Flops">Flip Flops</Checkbox>
-                  <Checkbox value="Lipstick">Lipstick</Checkbox>
-                  <Checkbox value="Face-Wash">Face Wash</Checkbox>
-                  <Checkbox value="Heeels">Heels</Checkbox>
-                  <Checkbox value="All" onChange={(e) => handleSelectAllCategories(e.target.checked)}>Select All</Checkbox>
+                  <Checkbox
+                    value="All"
+                    onChange={(e) =>
+                      handleSelectAllCategories(e.target.checked)
+                    }
+                  >
+                    Select All
+                  </Checkbox>
                 </VStack>
               </CheckboxGroup>
             </Box>
             <Divider />
             <Box pl={4}>
-              <Text fontSize={"14px"} fontWeight={700} color="#282c3f" textAlign={"left"}>BRAND</Text>
-              <CheckboxGroup size={"sm"} onChange={handleBrand} defaultValue={searchParams.getAll("brand")}>
+              <Text
+                fontSize={"14px"}
+                fontWeight={700}
+                color="#282c3f"
+                textAlign={"left"}
+              >
+                BRAND
+              </Text>
+              <CheckboxGroup
+                size={"sm"}
+                onChange={handleBrand}
+                defaultValue={searchParams.getAll("brand")}
+              >
                 <Stack alignItems={"flex-start"} mt={1} spacing={1}>
                   <Checkbox value={"Puma"}>Puma</Checkbox>
                   <Checkbox value={"Levis"}>Levis</Checkbox>
